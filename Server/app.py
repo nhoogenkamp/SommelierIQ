@@ -1,5 +1,5 @@
 from flask import Flask
-from routes.wines import get_tables
+from routes.wines import get_tables, get_wines
 
 app = Flask(__name__)
 
@@ -9,6 +9,10 @@ app = Flask(__name__)
 @app.route('/getTable', methods=['GET'])
 def tables():
     return get_tables()
+
+@app.route('/getWines', methods=['GET'])
+def wines():
+    return get_wines()
 
 if __name__ == "__main__":
     print("connecting to DB....")

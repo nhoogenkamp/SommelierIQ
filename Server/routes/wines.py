@@ -12,3 +12,12 @@ def get_tables():
     con.close()
     table_names = [table[0] for table in tables]
     return jsonify({"tables": table_names}), 200
+
+def get_wines():
+    con = get_db_connection()
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM wines;")
+    wines = cursor.fetchall()
+    cursor.close()
+    con.close()
+    return jsonify(wines), 200
