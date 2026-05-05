@@ -1,15 +1,17 @@
 from flask import Flask,jsonify
 import mysql.connector
+from dotenv import load_dotenv
+import os
 
-
+load_dotenv()
 app = Flask(__name__)
 
 con=mysql.connector.connect(
-    host='trolley.proxy.rlwy.net',
-    port=39957,
-    database='railway',
-    user='root',
-    password='fnKEhqNMePaAhEdEzsEJkhEZNiDgANTw'
+    host=os.getenv('DB_HOST'),
+    port=os.getenv('DB_PORT'),
+    database=os.getenv('DB_NAME'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSWORD')
 )
 @app.route('/getTable', methods=['GET'])
 def get_tables():
@@ -24,4 +26,4 @@ def get_tables():
 
 if __name__=="__main__":
     print("connecting to DB....")
-    app.run(host='0.0.0.0', port='8080')
+    app.run(host='0.0.0.0', port=8080)
