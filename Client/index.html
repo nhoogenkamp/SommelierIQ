@@ -6,10 +6,23 @@
 </head>
 
 <body>
+<button onclick="getWines()">Load Wines</button>
 
-    <h1>Full Wine List</h1>
-    <button onclick="getWines()">click</button>
-    <div id="demo"></div>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Grape</th>
+            <th>Country</th>
+            <th>Region</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody id="wines"></tbody>
+</table>
 
     <script src="script.js"></script>
 

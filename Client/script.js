@@ -23,6 +23,6 @@ function getWines() {
                 </tr>
             `;            
         });
-        document.getElementById("demo").innerHTML = out;
+        document.getElementById("wines").innerHTML = out;
     })
 }
