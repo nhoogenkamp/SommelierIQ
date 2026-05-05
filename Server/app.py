@@ -6,6 +6,8 @@ import os
 load_dotenv()
 app = Flask(__name__)
 
+# https://www.newline.co/@goatandsheep/python-dotenv-managing-your-environment-variables-with-ease--ce4fb62d
+# Using .env file to store secret password etc.
 con=mysql.connector.connect(
     host=os.getenv('DB_HOST'),
     port=os.getenv('DB_PORT'),
