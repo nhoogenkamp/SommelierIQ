@@ -24,5 +24,4 @@ def get_tables():
 
 if __name__=="__main__":
     print("connecting to DB....")
-    app.run(debug=True)
     app.run(host='0.0.0.0', port='8080')
