@@ -2,32 +2,12 @@
 
 // display in table :https://www.youtube.com/watch?v=eS-FVnhjvEQ
 
-// grouping wines in colour and country; https://www.tutorialspoint.com/article/json-group-object-in-javascript
 
 function getWines() {
     const url = 'http://localhost:8080/getWines'
     fetch(url)
     .then(response => response.json())  
     .then(json => {
-
-        const grouped = json.reduce((groups, wine) => {
-
-            const colour = wine.wine_type;
-            const country = wine.country;
-
-            if (!groups[colour]) {
-                groups[colour] = {};
-            }
-
-            if (!groups[colour][country]) {
-                groups[colour][country] = [];
-            }
-
-            groups[colour][country].push(wine);
-
-            return groups;
-
-        }, {});
 
         let out = "";
 

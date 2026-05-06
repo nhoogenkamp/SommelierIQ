@@ -17,7 +17,25 @@ def get_tables():
 def get_wines():
     con = get_db_connection()
     cursor = con.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM wines;")
+    cursor.execute("""
+    SELECT * FROM wines
+    ORDER BY
+        FIELD(
+            bottle_type,
+            'Glass',
+            'Half Bottle',
+            'bottle',
+            'magnum',
+            'Double Magnum',
+            'Jeroboam',
+            'Imperial',
+            'Salmanazar',
+            'Melchior'
+        ),
+        wine_type ASC,
+        country ASC,
+        price ASC
+    """)
     wines = cursor.fetchall()
     cursor.close()
     con.close()
