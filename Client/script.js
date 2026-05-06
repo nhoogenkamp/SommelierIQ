@@ -2,6 +2,21 @@
 
 // display in table :https://www.youtube.com/watch?v=eS-FVnhjvEQ
 
+function filterWines(wines) {
+    const selectedColour = document.getElementById("wineColour").value;
+    const selectedBottle = document.getElementById("bottleType").value;
+    const maxPrice = document.getElementById("maxPrice").value;
+
+    return wines.filter(wine => {
+
+        return (
+            (selectedColour === "" || wine.wine_type === selectedColour) &&
+            (selectedBottle === "" || wine.bottle_type === selectedBottle) &&
+            (maxPrice === "" || Number(wine.price) <= Number(maxPrice))
+        );
+
+    });
+}
 
 function getWines() {
     const url = 'http://localhost:8080/getWines'
@@ -9,22 +24,25 @@ function getWines() {
     .then(response => response.json())  
     .then(json => {
 
-        let out = "";
+    const filteredWines = filterWines(json);
 
-        json.forEach(element => {
-            out += `
-                <tr>
-                    <td>${element.year}</td>
-                    <td>${element.bottle_type}</td>
-                    <td>${element.name}</td>
-                    <td>${element.wine_type}</td>
-                    <td>${element.grape}</td>
-                    <td>${element.country}</td>
-                    <td>${element.region}</td>
-                    <td>${element.price}</td>
-                </tr>
-            `;            
-        });
-        document.getElementById("wines").innerHTML = out;
-    })
+    let out = "";
+
+    filteredWines.forEach(element => {
+        out += `
+            <tr>
+                <td>${element.year}</td>
+                <td>${element.bottle_type}</td>
+                <td>${element.name}</td>
+                <td>${element.wine_type}</td>
+                <td>${element.grape}</td>
+                <td>${element.country}</td>
+                <td>${element.region}</td>
+                <td>${element.price}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("wines").innerHTML = out;
+});
 }
