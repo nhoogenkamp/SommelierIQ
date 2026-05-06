@@ -14,7 +14,7 @@ function genFields() {
 
                 <label for="dish_${i}">Dish ${i}</label>
 
-                <select id="dish_${i}">
+                <select id="dish_${i}" onchange="checkSauce(${i})">
 
                     <option value="">Select Dish</option>
 
@@ -105,10 +105,47 @@ function genFields() {
 
                 </select>
 
+                <div id="sauce_${i}"></div>
+
                 <br><br>
 
             </div>
 
         `;
+    }
+}
+
+function checkSauce(i) {
+
+    let dish = document.getElementById(`dish_${i}`).value;
+
+    if (
+        dish == "Fillet Steak" ||
+        dish == "Rib Eye Steak" ||
+        dish == "Striploin Steak" ||
+        dish == "Striploin on the Bone" ||
+        dish == "Ridgeway Wagyu Bone In Striploin" ||
+        dish == "T-Bone Steak"
+    ) {
+
+        document.getElementById(`sauce_${i}`).innerHTML = `
+            
+            <label>Sauce</label>
+
+            <select>
+                <option value="">Select Sauce</option>
+                <option value="Pepper Sauce">Pepper Sauce</option>
+                <option value="Bearnaise">Bearnaise</option>
+                <option value="Garlic Butter">Garlic Butter</option>
+                <option value="Bone Marrow Jus">Bone Marrow Jus</option>
+                <option value="No Sauce">No Sauce</option>
+            </select>
+
+        `;
+
+    } else {
+
+        document.getElementById(`sauce_${i}`).innerHTML = "";
+
     }
 }
