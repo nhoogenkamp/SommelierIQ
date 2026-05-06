@@ -3,6 +3,7 @@ from db import get_db_connection
 
 # reference: https://www.youtube.com/watch?v=14HTiBQEQ9M
 # added dictorionary = true to read data in client side: https://stackoverflow.com/questions/22769873/python-mysql-connector-dictcursor
+# order changed https://www.w3schools.com/sql/sql_orderby.asp
 
 def get_tables():
     con = get_db_connection()
