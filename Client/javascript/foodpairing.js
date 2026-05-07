@@ -149,3 +149,39 @@ function checkSauce(i) {
 
     }
 }
+
+
+// https://www.youtube.com/watch?v=QKcVjdLEX_s
+// Sending data from dish 1 js to py when button clicked
+
+function submit_dish() {
+
+     // Get the dropdown element with id="dish_1"
+    var dish = document.getElementById("dish_1");
+
+    // Create JavaScript object to send to Flask
+    // dish.value gets the selected option from dropdown
+    var entry = {
+        dish: dish.value
+    };
+
+    // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
+    fetch(`http://localhost:8080/senddish`, {
+        method: "POST",
+        body: JSON.stringify(entry),
+        cache: "no-cache",
+        headers: new Headers({
+            "content-type": "application/json"
+        })
+    })
+
+    // Check response from Flask
+    .then(function(response) {
+        if (response.status !==200) {
+            console.log(`response status was not 200: ${response.status}`);
+            return;
+        }
+        console.log("1 dish sent successfully")
+        
+    })
+}
