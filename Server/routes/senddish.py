@@ -16,7 +16,7 @@ def send_dish():
     cursor = con.cursor(dictionary=True)
 
     # SQL query searches for matching food item : https://www.w3schools.com/python/python_mysql_where.asp
-    sql = "SELECT * FROM food_items WHERE name = %s"
+    sql = "SELECT * FROM food_items WHERE dish_name = %s"
     dish = (selected_dish,)
 
     # Execute SQL query safely to prevent SQL Injection
