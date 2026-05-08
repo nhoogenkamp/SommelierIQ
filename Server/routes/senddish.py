@@ -43,6 +43,8 @@ def send_dish():
         wine["match_percentage"] = score
         recommendations.append(wine)
 
+    # change the order of recommendations based on match percentage: https://www.w3schools.com/python/trypython.asp?filename=demo_lambda_sorted
+    recommendations = sorted (recommendations, key=lambda x: x["match_percentage"],reverse=True)
     print(recommendations)
 
     # Close cursor
