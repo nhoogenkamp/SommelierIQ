@@ -174,7 +174,7 @@ function submit_dish() {
             "content-type": "application/json"
         })
     })
-
+    
     // Check response from Flask
     .then(function(response) {
         if (response.status !==200) {
@@ -184,4 +184,28 @@ function submit_dish() {
         console.log("1 dish sent successfully")
         
     })
+
+    .then(function(json) {
+
+    const recommendations  = json.recommendations;
+
+    let out = "";
+
+    recommendations.forEach(element => {
+        out += `
+            <tr>
+                <td>${element.year}</td>
+                <td>${element.bottle_type}</td>
+                <td>${element.name}</td>
+                <td>${element.wine_type}</td>
+                <td>${element.grape}</td>
+                <td>${element.country}</td>
+                <td>${element.region}</td>
+                <td>${element.match_percentage}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("recommendations").innerHTML = out;
+});
 }
