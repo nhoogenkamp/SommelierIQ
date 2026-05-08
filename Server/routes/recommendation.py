@@ -1,8 +1,15 @@
 #function to calculate food and wine match 
-def calculate_match(food, wine):
+def calculate_match(food, wine, sauce):
     total_score = 0
     if wine["wine_type"] == food["colour_wine"]:
         total_score += wine["colour_score"]
+
+    if sauce :
+         # Add sauce modifiers onto food scores
+        food["body_score"] += sauce["body_modifier"]
+        food["tannin_score"] += sauce["tannin_modifier"]
+        food["acidity_score"] += sauce["acidity_modifier"]
+        food["sweetness_score"] += sauce["sweetness_modifier"]
 
     # calculating body score, tanning score, acidity and sweetness difference
     # to ensure no negative numbers using abs() https://www.w3schools.com/python/ref_func_abs.asp
