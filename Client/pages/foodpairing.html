@@ -23,8 +23,26 @@
 
 <div id="fields"></div>
 
-#button that sends dish_1 to backend
-<button onclick="submit_dish()">Send 1 Dish</button>
+<!-- Button that sends dish_1 to backend -->
+ <button onclick="submit_dish()">Send 1 Dish</button>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Bottle Type</th>
+            <th>Name</th>
+            <th>Wine Type</th>
+            <th>Grape</th>
+            <th>Country</th>
+            <th>Region</th>
+            <th>match_percentage</th>
+        </tr>
+    </thead>
+
+    <tbody id="recommendations"></tbody>
+</table>
+
 
 <script src="../javascript/foodpairing.js"></script>
 
