@@ -134,8 +134,7 @@ function checkSauce(i) {
 
              <!-- sauce id so JavaScript can read selected sauce -->
             <select id="sauce_select_${i}">
-
-            <select>
+            
                 <option value="">Select Sauce</option>
                 <option value="Pepper Sauce">Pepper Sauce</option>
                 <option value="Bearnaise">Bearnaise</option>
