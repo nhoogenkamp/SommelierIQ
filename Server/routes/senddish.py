@@ -58,6 +58,9 @@ def send_dish():
     # Food rows returned from database
     "foods": foods,
 
-    # Food rows returned from database
-    "foods": wines    
+    # wines rows returned from database
+    "wines": wines,   
+
+    # recommendations returned from from calculations and added match percentage
+    "recommendations": recommendations 
     }), 200 
