@@ -1,5 +1,7 @@
 from flask import request, jsonify
 from db import get_db_connection
+from routes.recommendation import calculate_match
+
 
 # Function handles POST request from frontend
 def send_dish():
@@ -27,6 +29,22 @@ def send_dish():
 
     print(foods)
 
+    #sql query to get all wines 
+    wine_sql = "SELECT * FROM wines"
+    cursor.execute(wine_sql)
+    wines = cursor.fetchall()
+
+    #creating an empty list to store recommendations
+    recommendations = []
+    
+    #looping through wines and calculate each wine based on food ordered 
+    for wine in wines:
+        score = calculate_match(foods,wine)
+        wine["match_percentage"] = score
+        recommendations.append(wine)
+
+    print(recommendations)
+
     # Close cursor
     cursor.close()
 
@@ -38,5 +56,8 @@ def send_dish():
     "received_data": data,
 
     # Food rows returned from database
-    "foods": foods
+    "foods": foods,
+
+    # Food rows returned from database
+    "foods": wines    
     }), 200 
