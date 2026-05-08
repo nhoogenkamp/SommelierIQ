@@ -203,6 +203,7 @@ function submit_dish() {
                 <td>${element.grape}</td>
                 <td>${element.country}</td>
                 <td>${element.region}</td>
+                <td>${element.price}</td>
                 <td>${element.match_percentage}</td>
             </tr>
         `;
