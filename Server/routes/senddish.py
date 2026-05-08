@@ -25,7 +25,7 @@ def send_dish():
     cursor.execute(sql, dish)
 
     # Get matching food rows from database
-    foods = cursor.fetchall()
+    foods = cursor.fetchone()
 
     print(foods)
 
