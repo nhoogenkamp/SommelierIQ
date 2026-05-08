@@ -182,7 +182,8 @@ function submit_dish() {
             return;
         }
         console.log("1 dish sent successfully")
-        
+        // had to return in order to use the next .then function
+        return response.json()
     })
 
     // .then which I will have to change later to asynch or await: https://www.w3schools.com/js/js_async_await.asp
