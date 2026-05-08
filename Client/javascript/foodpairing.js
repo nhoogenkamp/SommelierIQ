@@ -132,6 +132,9 @@ function checkSauce(i) {
             
             <label>Sauce</label>
 
+             <!-- sauce id so JavaScript can read selected sauce -->
+            <select id="sauce_select_${i}">
+
             <select>
                 <option value="">Select Sauce</option>
                 <option value="Pepper Sauce">Pepper Sauce</option>
@@ -155,14 +158,22 @@ function checkSauce(i) {
 // Sending data from dish 1 js to py when button clicked
 
 function submit_dish() {
+    var sauce_value = "";
 
      // Get the dropdown element with id="dish_1"
     var dish = document.getElementById("dish_1");
 
+    // same for sauce
+    var sauce = document.getElementById("sauce_select_1");
+
+    if (sauce){
+        sauce_value = sauce.value
+    }
     // Create JavaScript object to send to Flask
     // dish.value gets the selected option from dropdown
     var entry = {
-        dish: dish.value
+        dish: dish.value,
+        sauce: sauce_value
     };
 
     // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
