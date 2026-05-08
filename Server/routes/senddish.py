@@ -11,8 +11,9 @@ def send_dish():
     # Print received data in Flask terminal
     print(data)
 
-    # Get the value stored in the key "dish"
+    # Get the value stored in the key "dish" and "sauce"
     selected_dish = data["dish"]
+    selected_sauce = data["sauce"]
 
     con = get_db_connection()
     cursor = con.cursor(dictionary=True)
@@ -29,6 +30,15 @@ def send_dish():
 
     print(foods)
 
+    if selected_sauce != "":
+        sauce_sql = "SELECT * FROM sauces WHERE name = %s"
+        sauce = (selected_sauce,)
+        cursor.execute(sauce_sql, sauce)
+        sauces = cursor.fetchone()
+
+    print(sauces)    
+
+
     #sql query to get all wines 
     wine_sql = "SELECT * FROM wines"
     cursor.execute(wine_sql)
@@ -39,7 +49,7 @@ def send_dish():
     
     #looping through wines and calculate each wine based on food ordered 
     for wine in wines:
-        score = calculate_match(foods,wine)
+        score = calculate_match(foods,wine,sauce)
         wine["match_percentage"] = score
         recommendations.append(wine)
 
