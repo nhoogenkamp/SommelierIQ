@@ -212,9 +212,9 @@ function submit_dish() {
 
     // .then which I will have to change later to asynch or await: https://www.w3schools.com/js/js_async_await.asp
     .then(function(json) {
-
+    
     const recommendations  = json.recommendations;
-
+    console.log(json);    
     let out = "";
 
     recommendations.forEach(element => {

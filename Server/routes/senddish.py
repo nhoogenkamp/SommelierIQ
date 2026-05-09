@@ -16,6 +16,8 @@ def send_dish():
 
     # Get the value stored in the key both dishes and sauces
     selected_dishes = data["dishes"]
+
+    individual_recommendations = []
     
     for selected in selected_dishes:
 
@@ -66,6 +68,13 @@ def send_dish():
         recommendations = sorted (recommendations, key=lambda x: x["match_percentage"],reverse=True)
         print(recommendations)
 
+        individual_recommendations.append({
+            "dish": selected_dish,
+            "sauce": selected_sauce,
+            "recommendations": recommendations
+    })
+    print(individual_recommendations)    
+
     # Close cursor
     cursor.close()
 
@@ -83,5 +92,5 @@ def send_dish():
     "wines": wines,   
 
     # recommendations returned from from calculations and added match percentage
-    "recommendations": recommendations 
+    "recommendations": individual_recommendations
     }), 200 
