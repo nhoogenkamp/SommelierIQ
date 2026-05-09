@@ -218,6 +218,17 @@ function submit_dish() {
     let out = "";
 
 recommendationGroups.forEach(group => {
+   // headers for each of the dish recommendation https://www.geeksforgeeks.org/html/html-colspan-attribute/
+    out += `
+        <tr>
+            <td colspan="9">
+                <h1>${group.dish}</h1>
+            </td>  
+            <td colspan="9">
+                <h1>${group.sauce}</h1>
+            </td>
+        </tr>
+    `;
 
     group.recommendations.forEach(wine => {
 
