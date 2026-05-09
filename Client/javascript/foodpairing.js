@@ -5,7 +5,7 @@ function genFields() {
     document.getElementById("fields").innerHTML = "";
 
     let numFields = document.getElementById("dishCount").value;
-
+    //assigning numbers to a dish chosen https://www.freecodecamp.org/news/what-does-the-dollar-sign-mean-in-javascript/#:~:text=The%20dollar%20sign%20followed%20by,m%20%24%7Bage%7D%20years%20old.
     for (let i = 1; i <= numFields; i++) {
 
         document.getElementById("fields").innerHTML += `
@@ -154,20 +154,26 @@ function checkSauce(i) {
 
 
 // https://www.youtube.com/watch?v=QKcVjdLEX_s
-// Sending data from dish 1 js to py when button clicked
+// Sending multiple dishes js to py when button clicked
 
 function submit_dish() {
-    var sauce_value = "";
+    var dishCount = document.getElementById("dishCount").value;
+    var dishes = [];
 
-     // Get the dropdown element with id="dish_1"
-    var dish = document.getElementById("dish_1");
+    for (let i = 1; i <= dishCount; i++){
+        // Get the dropdown element with id
+        var dish = document.getElementById(`dish_${i}`);
+        // same for sauce
+        var sauce = document.getElementById(`sauce_${i}`);
 
-    // same for sauce
-    var sauce = document.getElementById("sauce_select_1");
+        var sauce_value = "";
 
-    if (sauce){
-        sauce_value = sauce.value
+        if (sauce){
+            sauce_value = sauce.value
+        }
+
     }
+    
     // Create JavaScript object to send to Flask
     // dish.value gets the selected option from dropdown
     var entry = {
