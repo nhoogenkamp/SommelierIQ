@@ -163,23 +163,32 @@ function submit_dish() {
     for (let i = 1; i <= dishCount; i++){
         // Get the dropdown element with id
         var dish = document.getElementById(`dish_${i}`);
-        // same for sauce
-        var sauce = document.getElementById(`sauce_${i}`);
+        // same for sauce but changed to sauce_select to get correct value each time
+        var sauce = document.getElementById(`sauce_select_${i}`);
 
         var sauce_value = "";
 
         if (sauce){
             sauce_value = sauce.value
-        }
+        }        
+        // Only add dish if user selected something
+        // .push to combine dish and sauce for each dish: https://www.w3schools.com/jsref/jsref_push.asp
+        if (dish.value !== "") {
 
+            dishes.push({
+                dish: dish.value,
+                sauce: sauce_value
+            });
+
+        }
     }
-    
+
     // Create JavaScript object to send to Flask
     // dish.value gets the selected option from dropdown
     var entry = {
-        dish: dish.value,
-        sauce: sauce_value
+        dishes: dishes
     };
+
 
     // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
     fetch(`http://localhost:8080/senddish`, {
