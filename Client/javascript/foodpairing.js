@@ -249,7 +249,7 @@ function submit_dish() {
                     <td>${element.grape}</td>
                     <td>${element.country}</td>
                     <td>${element.region}</td>
-                    <td>${element.match_percentage}</td>
+                    <td>${element.match_percentage} %</td>
                     <td>€ ${element.price}</td>
                 </tr>
             `;
@@ -288,7 +288,7 @@ recommendationGroups.forEach(group => {
                 <td>${wine.grape}</td>
                 <td>${wine.country}</td>
                 <td>${wine.region}</td>
-                <td>${wine.match_percentage}</td>
+                <td>${wine.match_percentage} %</td>
                 <td>€ ${wine.price}</td>
             </tr>
         `;
