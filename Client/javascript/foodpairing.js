@@ -212,6 +212,34 @@ function submit_dish() {
 
     // .then which I will have to change later to asynch or await: https://www.w3schools.com/js/js_async_await.asp
     .then(function(json) {
+
+    const combined_recommendations = json.combined_recommendations;
+
+    let combinedOut = "";
+
+    // only show combined recommendations if they exist
+    if (combined_recommendations.length > 0) {
+
+        combined_recommendations.forEach(element => {
+
+            combinedOut += `
+                <tr>
+                    <td>${element.year}</td>
+                    <td>${element.bottle_type}</td>
+                    <td>${element.name}</td>
+                    <td>${element.wine_type}</td>
+                    <td>${element.grape}</td>
+                    <td>${element.country}</td>
+                    <td>${element.region}</td>
+                    <td>${element.match_percentage}</td>
+                    <td>${element.price}</td>
+                </tr>
+            `;
+
+        });
+
+    document.getElementById("combined_recommendations").innerHTML = out;
+}    
     
     const recommendationGroups = json.recommendations;
     console.log(json);    
