@@ -213,25 +213,31 @@ function submit_dish() {
     // .then which I will have to change later to asynch or await: https://www.w3schools.com/js/js_async_await.asp
     .then(function(json) {
     
-    const recommendations  = json.recommendations;
+    const recommendationGroups = json.recommendations;
     console.log(json);    
     let out = "";
 
-    recommendations.forEach(element => {
+recommendationGroups.forEach(group => {
+
+    group.recommendations.forEach(wine => {
+
         out += `
             <tr>
-                <td>${element.year}</td>
-                <td>${element.bottle_type}</td>
-                <td>${element.name}</td>
-                <td>${element.wine_type}</td>
-                <td>${element.grape}</td>
-                <td>${element.country}</td>
-                <td>${element.region}</td>
-                <td>${element.match_percentage}</td>
-                <td>${element.price}</td>
+                <td>${wine.year}</td>
+                <td>${wine.bottle_type}</td>
+                <td>${wine.name}</td>
+                <td>${wine.wine_type}</td>
+                <td>${wine.grape}</td>
+                <td>${wine.country}</td>
+                <td>${wine.region}</td>
+                <td>${wine.match_percentage}</td>
+                <td>${wine.price}</td>
             </tr>
         `;
+
     });
+
+});
 
     document.getElementById("recommendations").innerHTML = out;
 });
