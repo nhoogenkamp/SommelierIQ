@@ -1,3 +1,20 @@
+// Filtering wines
+function filterWines(wines) {
+    const selectedColour = document.getElementById("wineColour").value;
+    const selectedBottle = document.getElementById("bottleType").value;
+    const maxPrice = document.getElementById("maxPrice").value;
+
+    return wines.filter(wine => {
+
+        return (
+            (selectedColour === "" || wine.wine_type === selectedColour) &&
+            (selectedBottle === "" || wine.bottle_type === selectedBottle) &&
+            (maxPrice === "" || Number(wine.price) <= Number(maxPrice))
+        );
+
+    });
+}
+
 // select fields to create number of fields https://stackoverflow.com/questions/73554956/how-to-display-fields-according-to-selected-input-using-plain-javascript
 
 function genFields() {
@@ -214,13 +231,13 @@ function submit_dish() {
     .then(function(json) {
 
     const combined_recommendations = json.combined_recommendations;
-
+    const filteredWines = filterWines(combined_recommendations);
     let combinedOut = "";
 
     // only show combined recommendations if they exist
     if (combined_recommendations.length > 0) {
 
-        combined_recommendations.slice(0,25).forEach(element => {
+        filteredWines.slice(0,25).forEach(element => {
 
             combinedOut += `
                 <tr>
@@ -254,9 +271,9 @@ recommendationGroups.forEach(group => {
             </td>  
         </tr>
     `;
-
+    const filteredWines = filterWines(group.recommendations);
     // too many results use slice method: https://www.w3schools.com/Jsref/jsref_slice_array.asp
-    group.recommendations.slice(0,15).forEach(wine => {
+    filteredWines.slice(0,15).forEach(wine => {
 
         out += `
             <tr>
