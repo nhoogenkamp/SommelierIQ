@@ -18,7 +18,8 @@ def send_dish():
     selected_dishes = data["dishes"]
 
     individual_recommendations = []
-    
+    combined_recommendations = []
+
     for selected in selected_dishes:
 
         selected_dish = selected["dish"]
@@ -71,9 +72,42 @@ def send_dish():
         individual_recommendations.append({
             "dish": selected_dish,
             "sauce": selected_sauce,
-            "recommendations": recommendations
+            "recommendations": recommendations 
     })
-    print(individual_recommendations)    
+    print(individual_recommendations)
+
+    # calculate combined recommendations if more than 1 dish selected
+    if len(selected_dishes) > 1:
+
+        # loop through wines
+        for i in range(len(wines)):
+
+            total_score = 0
+
+            # loop through every dish recommendation group
+            for group in individual_recommendations:
+
+                total_score += group["recommendations"][i]["match_percentage"]
+
+            # calculate average score
+            average_score = total_score / len(selected_dishes)
+
+            # create wine copy
+            wine_result = wines[i].copy()
+
+            # replace score with average
+            wine_result["match_percentage"] = round(average_score)
+
+            combined_recommendations.append(wine_result)
+
+        # sort combined recommendations
+        combined_recommendations = sorted(
+            combined_recommendations,
+            key=lambda x: x["match_percentage"],
+            reverse=True
+        )
+
+    print(combined_recommendations)
 
     # Close cursor
     cursor.close()
