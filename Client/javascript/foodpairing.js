@@ -184,8 +184,7 @@ function submit_dish() {
     }
 
     // Create JavaScript object to send to Flask
-    // dish.value gets the selected option from dropdown
-    var entry = {
+        var entry = {
         dishes: dishes
     };
 
