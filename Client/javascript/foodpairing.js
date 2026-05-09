@@ -235,8 +235,9 @@ function submit_dish() {
     let combinedOut = "";
 
     // only show combined recommendations if they exist
-    if (combined_recommendations.length > 0) {
+    if (combined_recommendations.length > 1) {
 
+        document.getElementById("combined_section").style.display = "block";
         filteredWines.slice(0,25).forEach(element => {
 
             combinedOut += `
@@ -255,7 +256,10 @@ function submit_dish() {
 
         });
 
-    document.getElementById("combined_recommendations").innerHTML = combinedOut;
+        document.getElementById("combined_recommendations").innerHTML = combinedOut;
+    }else {
+        // don't show table combined_recommendations
+        document.getElementById("combined_section").style.display = "none";
 }    
     
     const recommendationGroups = json.recommendations;

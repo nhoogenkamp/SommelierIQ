@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+<!-- Dishcounts to determine how many dishes you can put in -->   
 <label for="dishCount">How Many Dishes would you like to use for pairing</label>
 
 <select id="dishCount" onchange="genFields()">
@@ -23,6 +23,7 @@
 
 <div id="fields"></div>
 
+<!-- Filtering wines based on colour, bottle type or price -->  
 <label for="wineColour">Wine Colour:</label>
 <select id="wineColour">
     <option value="">All</option>
@@ -65,30 +66,31 @@
 <!-- Button that sends dish_1 to backend -->
  <button onclick="submit_dish()">Submit</button>
 
+<div id="combined_section" style="display:none;">
+    <!-- Results for combined recommendations -->
+    <h2>Combined Recommendations</h2>
 
+    <table border="1">
 
-<h2>Combined Recommendations</h2>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Bottle Type</th>
+                <th>Name</th>
+                <th>Wine Type</th>
+                <th>Grape</th>
+                <th>Country</th>
+                <th>Region</th>
+                <th>match_percentage</th>
+                <th>Price</th>
+            </tr>
+        </thead>
 
-<table border="1">
+        <tbody id="combined_recommendations"></tbody>
 
-    <thead>
-        <tr>
-            <th>Year</th>
-            <th>Bottle Type</th>
-            <th>Name</th>
-            <th>Wine Type</th>
-            <th>Grape</th>
-            <th>Country</th>
-            <th>Region</th>
-            <th>match_percentage</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-
-    <tbody id="combined_recommendations"></tbody>
-
-</table>
-
+    </table>
+</div>    
+<!-- Results for individual wine dish pairing -->
 <h2>Individual Recommendations</h2>
 <table border="1">
     <thead>
