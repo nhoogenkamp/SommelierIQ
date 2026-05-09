@@ -222,15 +222,13 @@ recommendationGroups.forEach(group => {
     out += `
         <tr>
             <td colspan="9">
-                <h1>${group.dish}</h1>
+                <h1>${group.dish}</h1><h2>${group.sauce}</h2>
             </td>  
-            <td colspan="9">
-                <h1>${group.sauce}</h1>
-            </td>
         </tr>
     `;
 
-    group.recommendations.forEach(wine => {
+    // too many results use slice method: https://www.w3schools.com/Jsref/jsref_slice_array.asp
+    group.recommendations.slice(0,15).forEach(wine => {
 
         out += `
             <tr>
