@@ -220,7 +220,7 @@ function submit_dish() {
     // only show combined recommendations if they exist
     if (combined_recommendations.length > 0) {
 
-        combined_recommendations.slice(0,15).forEach(element => {
+        combined_recommendations.slice(0,25).forEach(element => {
 
             combinedOut += `
                 <tr>
