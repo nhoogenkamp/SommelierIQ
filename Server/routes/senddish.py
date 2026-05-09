@@ -30,6 +30,8 @@ def send_dish():
 
     print(foods)
 
+    sauces = None
+
     if selected_sauce != "":
         sauce_sql = "SELECT * FROM sauces WHERE name = %s"
         sauce = (selected_sauce,)
