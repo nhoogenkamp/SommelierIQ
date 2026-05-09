@@ -126,5 +126,8 @@ def send_dish():
     "wines": wines,   
 
     # recommendations returned from from calculations and added match percentage
-    "recommendations": individual_recommendations
+    "recommendations": individual_recommendations,
+
+    # recommendations for avarage matching score based on all food selected
+    "combined_recommendations": combined_recommendations 
     }), 200 
