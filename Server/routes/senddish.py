@@ -49,7 +49,7 @@ def send_dish():
     
     #looping through wines and calculate each wine based on food ordered 
     for wine in wines:
-        score = calculate_match(foods,wine,sauce)
+        score = calculate_match(foods,wine,sauces)
         wine["match_percentage"] = score
         recommendations.append(wine)
 
