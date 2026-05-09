@@ -220,7 +220,7 @@ function submit_dish() {
     // only show combined recommendations if they exist
     if (combined_recommendations.length > 0) {
 
-        combined_recommendations.forEach(element => {
+        combined_recommendations.slice(0,15).forEach(element => {
 
             combinedOut += `
                 <tr>
@@ -238,7 +238,7 @@ function submit_dish() {
 
         });
 
-    document.getElementById("combined_recommendations").innerHTML = out;
+    document.getElementById("combined_recommendations").innerHTML = combinedOut;
 }    
     
     const recommendationGroups = json.recommendations;
