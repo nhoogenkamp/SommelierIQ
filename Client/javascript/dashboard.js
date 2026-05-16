@@ -53,6 +53,7 @@ function getWines() {
     });
 
     document.getElementById("wines").innerHTML = out;
+    document.getElementById("Wineform").reset();
 });
 }
 function closeWines() {
