@@ -42,7 +42,7 @@ function register_admin() {
             document.getElementById("registerForm").reset();
 
             // redirect to dashboard page    
-            window.location.href = "dashboard.html";
+            window.location.href = "login.html";
         }
 
     });
