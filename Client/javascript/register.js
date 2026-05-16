@@ -38,6 +38,10 @@ function register_admin() {
         document.getElementById("message").innerHTML = json.message || json.error;
 
         if(json.message){
+            // clearing fields
+            document.getElementById("registerForm").reset();
+
+            // redirect to dashboard page    
             window.location.href = "dashboard.html";
         }
 
