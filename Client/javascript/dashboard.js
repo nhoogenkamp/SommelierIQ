@@ -42,6 +42,11 @@ function getWines() {
                 <td>${element.country}</td>
                 <td>${element.region}</td>
                 <td>${element.price}</td>
+                <td>${element.body_score}</td>
+                <td>${element.tannin_score}</td>
+                <td>${element.acidity_score}</td>
+                <td>${element.sweetness_score}</td>
+                <td>${element.description}</td>
             </tr>
         `;
     });
