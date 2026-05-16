@@ -21,6 +21,7 @@ function filterWines(wines) {
 }
 
 function getWines() {
+    document.getElementById("wineSection").style.display = "block";
     const url = 'http://localhost:8080/getWines'
     fetch(url)
     .then(response => response.json())  
@@ -53,4 +54,9 @@ function getWines() {
 
     document.getElementById("wines").innerHTML = out;
 });
+}
+function closeWines() {
+
+    document.getElementById("wineSection").style.display = "none";
+
 }

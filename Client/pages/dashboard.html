@@ -55,29 +55,31 @@
 
 <button onclick="getWines()">Load Wines</button>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>WineID</th>
-            <th>Year</th>
-            <th>Bottle Type</th>
-            <th>Name</th>
-            <th>Wine Type</th>
-            <th>Grape</th>
-            <th>Country</th>
-            <th>Region</th>
-            <th>Price</th>
-            <th>body_score</th>
-            <th>tannin_score</th>
-            <th>acidity_score</th>
-            <th>sweetness_score</th>
-            <th>description</th>
-        </tr>
-    </thead>
+<button onclick="closeWines()"> Close Wines </button>
+<div id="wineSection" style="display:none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>WineID</th>
+                <th>Year</th>
+                <th>Bottle Type</th>
+                <th>Name</th>
+                <th>Wine Type</th>
+                <th>Grape</th>
+                <th>Country</th>
+                <th>Region</th>
+                <th>Price</th>
+                <th>body_score</th>
+                <th>tannin_score</th>
+                <th>acidity_score</th>
+                <th>sweetness_score</th>
+                <th>description</th>
+            </tr>
+        </thead>
 
-    <tbody id="wines"></tbody>
-</table>
-
+        <tbody id="wines"></tbody>
+    </table>
+</div>
     <script src="../javascript/dashboard.js"></script>
 
 </body>
