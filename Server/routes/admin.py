@@ -20,6 +20,20 @@ def add_admin():
     con = get_db_connection()
     cursor = con.cursor(dictionary=True)
 
+    # checking if user exist
+    check_sql = "SELECT * FROM admins WHERE username = %s"
+    check_value= (username,)
+    
+    cursor.execute(check_sql, check_value)
+
+    admin_exists = cursor.fetchone()
+    if admin_exists:
+        cursor.close()
+        con.close()
+        return jsonify({
+            "error": "Username already exists"
+        }), 400
+
     # insert admin into admins table
     sql = "INSERT INTO admins (restaurant_id, username, password_hash) VALUES (%s, %s, %s)"
     values = (restaurant_id, username, password_hash)
