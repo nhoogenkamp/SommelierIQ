@@ -37,6 +37,10 @@ function register_admin() {
         console.log(json);
         document.getElementById("message").innerHTML = json.message || json.error;
 
+        if(json.message){
+            window.location.href = "dashboard.html";
+        }
+
     });
 
 }
