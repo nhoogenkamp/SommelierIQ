@@ -26,7 +26,7 @@ function register_admin() {
     .then(function(response) {
         if (response.status !==200) {
             console.log(`response status was not 200: ${response.status}`);
-            return;
+            return response.json();
         }
         console.log("received new admin user")
         // had to return in order to use the next .then function
