@@ -3,6 +3,7 @@
 // display in table :https://www.youtube.com/watch?v=eS-FVnhjvEQ
 
 function filterWines(wines) {
+    const WineID = document.getElementById("wine_id").value;
     const selectedColour = document.getElementById("wineColour").value;
     const selectedBottle = document.getElementById("bottleType").value;
     const maxPrice = document.getElementById("maxPrice").value;
@@ -12,6 +13,7 @@ function filterWines(wines) {
         return (
             (selectedColour === "" || wine.wine_type === selectedColour) &&
             (selectedBottle === "" || wine.bottle_type === selectedBottle) &&
+            (WineID === "" || Number(wine.wine_id) <= Number(wine_id)) &&
             (maxPrice === "" || Number(wine.price) <= Number(maxPrice))
         );
 
