@@ -11,7 +11,7 @@ function login_admin() {
     };
 
      // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-    fetch(`http://localhost:8080/addAdmin`, {
+    fetch(`http://localhost:8080/login_admin`, {
         method: "POST",
         body: JSON.stringify(entry),
         cache: "no-cache",
@@ -37,7 +37,7 @@ function login_admin() {
 
         if(json.message){
             // clearing fields
-            document.getElementById("registerForm").reset();
+            document.getElementById("loginForm").reset();
 
             // redirect to dashboard page    
             window.location.href = "dashboard.html";
