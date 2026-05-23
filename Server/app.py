@@ -3,6 +3,7 @@ from routes.wines import get_tables, get_wines
 from routes.menu import get_food
 from routes.senddish import send_dish
 from routes.admin import add_admin, login_admin
+from routes.addwine import add_wine
 
 from flask_cors import CORS
 # Ran into CORS error:
@@ -40,6 +41,10 @@ def create_admin():
 @app.route('/adminLogin', methods=['POST'])
 def admin_login():
     return login_admin()
+
+@app.route('/addWine', methods=['POST'])
+def new_wine():
+    return add_wine()
 
 if __name__ == "__main__":
     print("connecting to DB....")
