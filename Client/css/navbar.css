@@ -1,5 +1,19 @@
-/* ===== NAVBAR ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
 
+body {
+    font-family: "Inter", sans-serif;
+    background: #f8f5f2;
+}
+/* ===== NAVBAR ===== */
+nav {
+    width: 100%;
+    margin: 0;
+}
 nav {
     display: flex;
     justify-content: center;
