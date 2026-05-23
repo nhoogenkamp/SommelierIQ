@@ -61,3 +61,62 @@ function closeWines() {
     document.getElementById("wineSection").style.display = "none";
 
 }
+
+// same style as login
+function addWine() {
+    
+    // getting values from html and us this to sent to Flask backend
+    var entry = {
+        restaurant_id: document.getElementById("restaurant_id").value,
+        name: document.getElementById("name").value,
+        wine_type: document.getElementById("wine_type").value,
+        grape: document.getElementById("grape").value,
+        country: document.getElementById("country").value,
+        region: document.getElementById("region").value,
+        year: document.getElementById("year").value,
+        bottle_type: document.getElementById("bottle_type").value,
+        price: document.getElementById("price").value,
+        available: document.getElementById("available").value,
+        description: document.getElementById("description").value,
+        colour_score: document.getElementById("colour_score").value,
+        body_score: document.getElementById("body_score").value,
+        tannin_score: document.getElementById("tannin_score").value,
+        acidity_score: document.getElementById("acidity_score").value,
+        sweetness_score: document.getElementById("sweetness_score").value
+    };
+
+
+     // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
+    fetch(`http://localhost:8080/addWine`, {
+        method: "POST",
+        body: JSON.stringify(entry),
+        cache: "no-cache",
+        headers: new Headers({
+            "content-type": "application/json"
+        })
+    })
+
+    // Check response from Flask
+    .then(function(response) {
+        if (response.status !==200) {
+            console.log(`response status was not 200: ${response.status}`);
+            document.getElementById("loginForm").reset();
+            return response.json();
+        }
+        console.log("received new wine")
+        // had to return in order to use the next .then function
+        return response.json()
+    })
+
+    .then(function(json) {
+        console.log(json);
+        document.getElementById("message").innerHTML = json.message || json.error;
+
+        if(json.message){
+            // clearing fields
+            document.getElementById("addWineForm").reset();
+        }
+
+    });
+
+}
