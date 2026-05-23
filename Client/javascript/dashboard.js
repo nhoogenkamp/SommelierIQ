@@ -128,7 +128,7 @@ function deleteWine() {
     console.log(entry.wine_id);    
 
     if (confirm(`Please confirm you want to delete wine ID ${entry.wine_id}`)) {
-        document.getElementById("message").innerHTML =  "Deleting wine";
+        document.getElementById("deleteMessage").innerHTML =  "Deleting wine";
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/deleteWine`, {
