@@ -30,12 +30,12 @@ function get_all_wines() {
     const filteredWines = filterWines(json);
 
     let out = "";
-
+    // showing yes or no for available: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator#try_it
     filteredWines.forEach(element => {
         out += `
             <tr>
                 <td>${element.wine_id}</td>
-                <td>${element.available}</td>
+                <td>${element.available == 1 ? "Yes" : "No"}</td>
                 <td>${element.year}</td>
                 <td>${element.bottle_type}</td>
                 <td>${element.name}</td>
