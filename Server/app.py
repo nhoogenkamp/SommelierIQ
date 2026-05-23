@@ -6,6 +6,7 @@ from routes.admin import add_admin, login_admin
 from routes.addwine import add_wine
 from routes.deleteWine import delete_wine
 from routes.updateWine import update_wine
+from routes.availableWine import available_wine
 
 
 from flask_cors import CORS
@@ -56,6 +57,10 @@ def deleting_wine():
 @app.route('/updateWine', methods=['POST'])
 def updating_wine():
     return update_wine()
+
+@app.route('/availableWine', methods=['POST'])
+def updating_available_wine():
+    return available_wine()
 
 if __name__ == "__main__":
     print("connecting to DB....")
