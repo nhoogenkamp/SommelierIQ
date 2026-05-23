@@ -159,6 +159,10 @@ function deleteWine() {
                 // clearing fields
                 document.getElementById("deleteWineForm").reset();
             }
+            if(json.error){
+            // clearing fields
+            document.getElementById("deleteWineForm").reset();
+        }
         });
     } else {
         document.getElementById("deleteMessage").innerHTML = "You pressed Cancel!";
