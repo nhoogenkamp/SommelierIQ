@@ -227,6 +227,34 @@
 
     </form>
 </div>
+<br><br>
+<div>
+    <form id="availableWineForm">
+
+        <div class="container">
+            <hr>
+            <h1>Update if a wine is available</h1>
+            <p>Provide the Wine ID and set to unavailable</p>
+            
+            <label for="WineID"><b>Wine ID</b></label>
+            <input type="number" placeholder="Enter wineID" id="update_wine_id">
+
+            <label>Available</label>
+            <select id="available">
+                <option value="1">Available</option>
+                <option value="0">Not Available</option>
+            </select>
+
+            <button type="button" onclick="availableWine()">
+                Update Wine availability
+            </button>
+
+            <p id="availableMessage"></p>
+
+        </div>
+
+    </form>
+</div>
 
     <script src="../javascript/dashboard.js"></script>
 
