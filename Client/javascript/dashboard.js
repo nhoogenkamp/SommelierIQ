@@ -109,7 +109,7 @@ function addWine() {
 
     .then(function(json) {
         console.log(json);
-        document.getElementById("message").innerHTML = json.message || json.error;
+        document.getElementById("addMessage").innerHTML = json.message || json.error;
 
         if(json.message){
             // clearing fields
@@ -153,7 +153,7 @@ function deleteWine() {
 
         .then(function(json) {
             console.log(json);
-            document.getElementById("message").innerHTML = json.message || json.error;
+            document.getElementById("deleteMessage").innerHTML = json.message || json.error;
 
             if(json.message){
                 // clearing fields
@@ -161,7 +161,7 @@ function deleteWine() {
             }
         });
     } else {
-        document.getElementById("message").innerHTML = "You pressed Cancel!";
+        document.getElementById("deleteMessage").innerHTML = "You pressed Cancel!";
     }      
 
 }
