@@ -213,12 +213,12 @@ function updateWine() {
 }
 function availableWine() {
     var entry = {
-        wine_id: document.getElementById("update_wine_id").value,
+        wine_id: document.getElementById("available_wine_id").value,
         available: document.getElementById("update_available").value,
         };  
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-        fetch(`http://localhost:8080/updateWine`, {
+        fetch(`http://localhost:8080/availableWine`, {
             method: "POST",
             body: JSON.stringify(entry),
             cache: "no-cache",
