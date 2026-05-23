@@ -78,7 +78,6 @@ function addWine() {
         price: document.getElementById("price").value,
         available: document.getElementById("available").value,
         description: document.getElementById("description").value,
-        colour_score: document.getElementById("colour_score").value,
         body_score: document.getElementById("body_score").value,
         tannin_score: document.getElementById("tannin_score").value,
         acidity_score: document.getElementById("acidity_score").value,
