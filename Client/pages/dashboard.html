@@ -21,7 +21,8 @@
         <option value="white">White</option>
         <option value="rose">Rosé</option>
         <option value="non_alcoholic">Non_alcoholic</option>
-        <option value="sherry">Sparkling</option>
+        <option value="Sparkling">Sparkling</option>
+        <option value="sherry">Sherry</option>
         <option value="champagne">Champagne</option>
         <option value="dessert">Dessert</option>
         <option value="port">Port</option>
@@ -53,6 +54,7 @@
         <option value="300">€300</option>
     </select>
 </form>
+<br><br>
 <button onclick="getWines()">Load Wines</button>
 
 <button onclick="closeWines()"> Close Wines </button>
@@ -80,7 +82,106 @@
 
         <tbody id="wines"></tbody>
     </table>
+    
 </div>
+<br><br>
+<div>
+    <form id="addWineForm">
+
+        <div class="container">
+            <hr>
+            <h1>Add a new wine</h1>
+            <p>Please provide details for new wine.</p>
+            
+
+            <label>Restaurant ID</label>
+            <input type="number" id="restaurant_id">
+
+            <label>Wine Name</label>
+            <input type="text" id="name">
+
+            <label>Wine Type</label>
+            <select id="wine_type">
+                <option value="">Select Wine Type</option>
+                <option value="red">Red</option>
+                <option value="white">White</option>
+                <option value="rose">Rosé</option>
+                <option value="sparkling">Sparkling</option>
+                <option value="champagne">Champagne</option>
+                <option value="dessert">Dessert</option>
+                <option value="port">Port</option>
+                <option value="sherry">Sherry</option>
+                <option value="non_alcoholic">Non Alcoholic</option>
+            </select>
+
+            <label>Grape</label>
+            <input type="text" id="grape">
+
+            <label>Country</label>
+            <input type="text" id="country">
+
+            <br><br>
+
+            <label>Region</label>
+            <input type="text" id="region">
+
+            <label>Year</label>
+            <input type="number" id="year">
+
+            <label>Bottle Type</label>
+            <select id="bottle_type">
+                <option value="">All</option>
+                <option value="Glass">Glass</option>
+                <option value="Half Bottle">Half Bottle</option>
+                <option value="Bottle">Bottle</option>
+                <option value="Magnum">Magnum</option>
+                <option value="Jeroboam">Jeroboam</option>
+                <option value="Melchior">Melchior</option>
+                <option value="Salmanazar">Salmanazar</option>
+                <option value="Double Magnum">Double Magnum</option>
+                <option value="Imperial">Imperial</option>
+            </select>
+
+            <label>Price</label>
+            <input type="number" id="price" step="0.01">
+
+            <label>Available</label>
+            <select id="available">
+                <option value="1">Available</option>
+                <option value="0">Not Available</option>
+            </select>
+
+            <br><br>
+
+            <label>Description</label>
+            <textarea id="description"></textarea>
+
+            <label>Body Score</label>
+            <input type="number" id="body_score" min="0" max="20">
+
+            <label>Tannin Score</label>
+            <input type="number" id="tannin_score" min="0" max="20">
+
+            <label>Acidity Score</label>
+            <input type="number" id="acidity_score" min="0" max="20">
+
+            <label>Sweetness Score</label>
+            <input type="number" id="sweetness_score" min="0" max="20">
+
+            <br><br>
+
+            <button type="button" onclick="addWine()">
+                Add Wine
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </form>
+</div>
+
+
     <script src="../javascript/dashboard.js"></script>
 
 </body>
