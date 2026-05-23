@@ -202,6 +202,31 @@
 
     </form>
 </div>
+<br><br>
+<div>
+    <form id="updateWineForm">
+
+        <div class="container">
+            <hr>
+            <h1>Update the price of a wine</h1>
+            <p>Provide the Wine ID and new price to delete the wine</p>
+            
+            <label for="WineID"><b>Wine ID</b></label>
+            <input type="number" placeholder="Enter wineID" id="update_wine_id">
+
+            <label>Price</label>
+            <input type="number" id="update_price" step="0.01">
+
+            <button type="button" onclick="updateWine()">
+                Update Wine Price
+            </button>
+
+            <p id="updateMessage"></p>
+
+        </div>
+
+    </form>
+</div>
 
     <script src="../javascript/dashboard.js"></script>
 
