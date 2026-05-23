@@ -5,6 +5,8 @@ from routes.senddish import send_dish
 from routes.admin import add_admin, login_admin
 from routes.addwine import add_wine
 from routes.deleteWine import delete_wine
+from routes.updateWine import update_wine
+
 
 from flask_cors import CORS
 # Ran into CORS error:
@@ -50,6 +52,10 @@ def new_wine():
 @app.route('/deleteWine', methods=['POST'])
 def deleting_wine():
     return delete_wine()
+
+@app.route('/updateWine', methods=['POST'])
+def updating_wine():
+    return update_wine()
 
 if __name__ == "__main__":
     print("connecting to DB....")
