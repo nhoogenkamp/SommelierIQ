@@ -263,7 +263,7 @@ function submit_dish() {
 }    
     
     const recommendationGroups = json.recommendations;
-    console.log(json);    
+     
     let out = "";
 
 recommendationGroups.forEach(group => {

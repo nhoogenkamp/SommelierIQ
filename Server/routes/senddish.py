@@ -9,7 +9,7 @@ def send_dish():
     # Reading the JSON sent
     data = request.get_json()
     # Print received data in Flask terminal
-    print(data)
+   
 
     con = get_db_connection()
     cursor = con.cursor(dictionary=True)
@@ -35,7 +35,7 @@ def send_dish():
         # Get matching food rows from database
         foods = cursor.fetchone()
 
-        print(foods)
+    
 
         sauces = None
 
@@ -45,7 +45,7 @@ def send_dish():
             cursor.execute(sauce_sql, sauce)
             sauces = cursor.fetchone()
 
-        print(sauces)    
+ 
 
 
         #sql query to get all wines 
@@ -67,14 +67,14 @@ def send_dish():
 
         # change the order of recommendations based on match percentage: https://www.w3schools.com/python/trypython.asp?filename=demo_lambda_sorted
         recommendations = sorted (recommendations, key=lambda x: x["match_percentage"],reverse=True)
-        print(recommendations)
+ 
 
         individual_recommendations.append({
             "dish": selected_dish,
             "sauce": selected_sauce,
             "recommendations": recommendations 
     })
-    print(individual_recommendations)
+  
 
     # calculate combined recommendations if more than 1 dish selected
     if len(selected_dishes) > 1:
@@ -104,7 +104,7 @@ def send_dish():
         reverse=True
     )
 
-    print(combined_recommendations)
+   
 
     # Close cursor
     cursor.close()
