@@ -180,7 +180,28 @@
 
     </form>
 </div>
+<br><br>
+<div>
+    <form id="deleteWineForm">
 
+        <div class="container">
+            <hr>
+            <h1>Delete a wine from the list</h1>
+            <p>Provide the Wine ID to delete the wine</p>
+            
+            <label for="WineID"><b>Wine ID</b></label>
+            <input type="number" placeholder="Enter wineID" id="wine_id">
+
+            <button type="button" onclick="deleteWine()">
+                Delete Wine
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </form>
+</div>
 
     <script src="../javascript/dashboard.js"></script>
 
