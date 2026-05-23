@@ -144,7 +144,6 @@ function deleteWine() {
         .then(function(response) {
             if (response.status !==200) {
                 console.log(`response status was not 200: ${response.status}`);
-                document.getElementById("deleteWineForm").reset();
                 return response.json();
             }
             console.log("Deleted wine")
