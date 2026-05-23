@@ -119,3 +119,50 @@ function addWine() {
     });
 
 }
+
+// Delete 1 wine with popup: https://www.w3schools.com/js/js_popup.asp
+function deleteWine() {
+    var entry = {
+        wine_id: document.getElementById("wine_id").value,
+        };
+    console.log(entry.wine_id);    
+
+    if (confirm(`Please confirm you want to delete wine ID ${entry.wine_id}`)) {
+        document.getElementById("message").innerHTML =  "Deleting wine";
+
+        // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
+        fetch(`http://localhost:8080/deleteWine`, {
+            method: "POST",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+
+        // Check response from Flask
+        .then(function(response) {
+            if (response.status !==200) {
+                console.log(`response status was not 200: ${response.status}`);
+                document.getElementById("deleteWineForm").reset();
+                return response.json();
+            }
+            console.log("Deleted wine")
+            // had to return in order to use the next .then function
+            return response.json()
+        })
+
+        .then(function(json) {
+            console.log(json);
+            document.getElementById("message").innerHTML = json.message || json.error;
+
+            if(json.message){
+                // clearing fields
+                document.getElementById("deleteWineForm").reset();
+            }
+        });
+    } else {
+        document.getElementById("message").innerHTML = "You pressed Cancel!";
+    }      
+
+}
