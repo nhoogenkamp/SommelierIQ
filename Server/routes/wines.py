@@ -19,7 +19,34 @@ def get_wines():
     con = get_db_connection()
     cursor = con.cursor(dictionary=True)
     cursor.execute("""
-    SELECT * FROM wines
+    SELECT * FROM wines WHERE available = 1
+    ORDER BY
+        FIELD(
+            bottle_type,
+            'Glass',
+            'Half Bottle',
+            'bottle',
+            'magnum',
+            'Double Magnum',
+            'Jeroboam',
+            'Imperial',
+            'Salmanazar',
+            'Melchior'
+        ),
+        wine_type ASC,
+        country ASC,
+        price ASC
+    """)
+    wines = cursor.fetchall()
+    cursor.close()
+    con.close()
+    return jsonify(wines), 200
+
+def get_all_wines():
+    con = get_db_connection()
+    cursor = con.cursor(dictionary=True)
+    cursor.execute("""
+    SELECT * FROM wines 
     ORDER BY
         FIELD(
             bottle_type,

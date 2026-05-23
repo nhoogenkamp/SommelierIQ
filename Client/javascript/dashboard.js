@@ -20,9 +20,9 @@ function filterWines(wines) {
     });
 }
 
-function getWines() {
+function get_all_wines() {
     document.getElementById("wineSection").style.display = "block";
-    const url = 'http://localhost:8080/getWines'
+    const url = 'http://localhost:8080/getallWines'
     fetch(url)
     .then(response => response.json())  
     .then(json => {
@@ -35,6 +35,7 @@ function getWines() {
         out += `
             <tr>
                 <td>${element.wine_id}</td>
+                <td>${element.available}</td>
                 <td>${element.year}</td>
                 <td>${element.bottle_type}</td>
                 <td>${element.name}</td>
