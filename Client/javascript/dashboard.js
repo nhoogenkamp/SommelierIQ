@@ -123,7 +123,7 @@ function addWine() {
 // Delete 1 wine with popup: https://www.w3schools.com/js/js_popup.asp
 function deleteWine() {
     var entry = {
-        wine_id: document.getElementById("wine_id").value,
+        wine_id: document.getElementById("delete_wine_id").value,
         };
     console.log(entry.wine_id);    
 
