@@ -169,3 +169,45 @@ function deleteWine() {
     }      
 
 }
+function updateWine() {
+    var entry = {
+        wine_id: document.getElementById("update_wine_id").value,
+        price: document.getElementById("update_price").value,
+        };  
+
+        // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
+        fetch(`http://localhost:8080/updateWine`, {
+            method: "POST",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+
+        // Check response from Flask
+        .then(function(response) {
+            if (response.status !==200) {
+                console.log(`response status was not 200: ${response.status}`);
+                return response.json();
+            }
+            console.log("updated wine price")
+            // had to return in order to use the next .then function
+            return response.json()
+        })
+
+        .then(function(json) {
+            console.log(json);
+            document.getElementById("updateMessage").innerHTML = json.message || json.error;
+
+            if(json.message){
+                // clearing fields
+                document.getElementById("updateWineForm").reset();
+            }
+            if(json.error){
+            // clearing fields
+            document.getElementById("updateWineForm").reset();
+        }
+    });   
+
+}
