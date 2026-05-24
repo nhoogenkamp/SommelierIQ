@@ -64,6 +64,8 @@ function validatefilters(wine_id) {
 
 function validateAddWine(restaurant_id, name, wine_type, grape,country, region, year, bottle_type, price, available,description, body_score, tannin_score, acidity_score, sweetness_score) {
 
+    const currentyear = new Date().getFullYear();
+
     if (restaurant_id === ""|| restaurant_id < 1 || !/^\d+$/.test(restaurant_id)) {
         document.getElementById("addMessage").innerHTML =
             "Please provide correct restaurant ID";
@@ -79,11 +81,64 @@ function validateAddWine(restaurant_id, name, wine_type, grape,country, region, 
             "Please provide a wine type";
         return false;
     }
-        if (name === "") {
+        if (grape === "" || !/^[a-zA-Z\s]+$/.test(grape)) {
         document.getElementById("addMessage").innerHTML =
-            "Please provide a wine name";
+            "Please provide the grape";
         return false;
     }
+    if (country === "" || !/^[a-zA-Z\s]+$/.test(country)) {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide the country";
+        return false;
+    }
+    if (region === "" || !/^[a-zA-Z\s]+$/.test(region)) {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide the Region";
+        return false;
+    }
+    if (year === ""|| year < 1900 || year > currentyear || !/^\d+$/.test(year)) {
+        document.getElementById("addMessage").innerHTML =
+            `Please provide a year between 1900 and ${currentyear}`;
+        return false;
+    }
+    if (bottle_type === "") {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide a bottle type";
+        return false;
+    }
+    if (price === ""|| price < 1 || !/^\d+(\.\d{1,2})?$/.test(price)) {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide valid price (example: 10.50 or 10)";
+        return false;
+    }    
+    if (Number(available) !== 0 && Number(available) !== 1) {
+        document.getElementById("addMessage").innerHTML =
+            "Must either be available or Not available";
+        return false;
+    }    
+    if (description.trim().split(/\s+/).length < 5) {
+        document.getElementById("addMessage").innerHTML =
+            "Description must have at least 5 words";
+        return false;
+    }
+    // validation for scores
+    var scores = [
+        body_score,
+        tannin_score,
+        acidity_score,
+        sweetness_score
+    ];
 
+    for (let i = 0; i < scores.length; i++) {
+
+        if (
+            scores[i] === "" ||
+            !/^\d+$/.test(scores[i]) || Number(scores[i]) < 1 || Number(scores[i]) > 20
+        ) {
+            document.getElementById("addMessage").innerHTML =
+                "Scores must be whole numbers between 1 and 20";
+            return false;
+    }
+}
     return true;
 }
