@@ -153,3 +153,34 @@ function validatedeletion(wine_id) {
 
     return true;
 }
+
+function validatePriceUpdateWine(wine_id, price) {
+
+    if (wine_id == "" && !/^\d+$/.test(wine_id)) {
+        document.getElementById("updateMessage").innerHTML =
+            "Please provide a numerical ID or leave blank for search all wines";
+        return false;
+    }
+    if (price === ""|| price < 1 || !/^\d+(\.\d{1,2})?$/.test(price)) {
+        document.getElementById("updateMessage").innerHTML =
+            "Please provide valid price (example: 10.50 or 10)";
+        return false;
+    }  
+
+    return true;
+}
+
+function validateAvailableUpdateWine(wine_id, available) {
+
+    if (wine_id == "" && !/^\d+$/.test(wine_id)) {
+        document.getElementById("availableMessage").innerHTML =
+            "Please provide a numerical ID or leave blank for search all wines";
+        return false;
+    }
+    if (Number(available) !== 0 && Number(available) !== 1) {
+        document.getElementById("availableMessage").innerHTML =
+            "Must either be available or Not available";
+        return false;
+    }    
+    return true;
+}

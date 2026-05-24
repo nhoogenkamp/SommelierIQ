@@ -187,7 +187,10 @@ function updateWine() {
         wine_id: document.getElementById("update_wine_id").value,
         price: document.getElementById("update_price").value,
         };  
-
+        
+    if (!validatePriceUpdateWine(entry.wine_id, entry.price)) {
+        return;
+    }   
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/updateWine`, {
             method: "PUT",
@@ -229,6 +232,10 @@ function availableWine() {
         wine_id: document.getElementById("available_wine_id").value,
         available: document.getElementById("update_available").value,
         };  
+
+    if (!validateAvailableUpdateWine(entry.wine_id, entry.available)) {
+        return;
+    }  
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/availableWine`, {
