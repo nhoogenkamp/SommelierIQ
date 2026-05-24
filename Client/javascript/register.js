@@ -4,7 +4,10 @@ function register_admin() {
     var restaurant_id = document.getElementById("restaurant_id").value;
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-
+    
+    if (!validateRegistration(restaurant_id,username,password)) {
+        return;
+    }
     // object sent to Flask backend
     var entry = {
         restaurant_id: restaurant_id,
