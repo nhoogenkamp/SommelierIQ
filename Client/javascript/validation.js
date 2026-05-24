@@ -1,6 +1,7 @@
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_validation_number
 // regex only digits: https://uibakery.io/regex-library/numbers-only
 
+// LOGIN PAGE
 function validateLogin(username, password) {
 
     if (username === "") {
@@ -16,6 +17,7 @@ function validateLogin(username, password) {
     return true;
 }
 
+// REGISTRATION PAGE
 function validateRegistration(restaurant_id,username, password) {
 
     if (restaurant_id === ""|| restaurant_id < 1 || !/^\d+$/.test(restaurant_id)) {
@@ -48,6 +50,7 @@ function validateRegistration(restaurant_id,username, password) {
     return true;
 }
 
+// DASHBOARD PAGE
 function validatefilters(wine_id) {
 
     if (wine_id !== "" && !/^\d+$/.test(wine_id)) {
@@ -55,6 +58,32 @@ function validatefilters(wine_id) {
             "Please provide a numerical ID or leave blank for search all wines";
         return false;
     }
-    
+
+    return true;
+}
+
+function validateAddWine(restaurant_id, name, wine_type, grape,country, region, year, bottle_type, price, available,description, body_score, tannin_score, acidity_score, sweetness_score) {
+
+    if (restaurant_id === ""|| restaurant_id < 1 || !/^\d+$/.test(restaurant_id)) {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide correct restaurant ID";
+        return false;
+    }
+    if (name === "") {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide a wine name";
+        return false;
+    }
+        if (wine_type === "") {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide a wine type";
+        return false;
+    }
+        if (name === "") {
+        document.getElementById("addMessage").innerHTML =
+            "Please provide a wine name";
+        return false;
+    }
+
     return true;
 }
