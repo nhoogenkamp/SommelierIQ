@@ -14,7 +14,7 @@
 
 <form id="Wineform">
     <label for="WineID"><b>WineID</b></label>
-    <input type="number" placeholder="Enter wineID" id="wine_id">
+    <input type="text" placeholder="Enter wineID" id="wine_id">
 
 
     <label for="wineColour">Wine Colour:</label>
@@ -56,8 +56,10 @@
         <option value="250">€250</option>
         <option value="300">€300</option>
     </select>
+    <p id="filtermessage"></p>
 </form>
 <br><br>
+
 <button onclick="get_all_wines()">Load Wines</button>
 
 <button onclick="closeWines()"> Close Wines </button>
@@ -256,6 +258,7 @@
 </div>
 
     <script src="../javascript/dashboard.js"></script>
+    <script src="../javascript/validation.js"></script>
     <script src="../javascript/navbar.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </body>

@@ -47,3 +47,14 @@ function validateRegistration(restaurant_id,username, password) {
     }
     return true;
 }
+
+function validatefilters(wine_id) {
+
+    if (wine_id !== "" && !/^\d+$/.test(wine_id)) {
+        document.getElementById("filtermessage").innerHTML =
+            "Please provide a numerical ID or leave blank for search all wines";
+        return false;
+    }
+    
+    return true;
+}

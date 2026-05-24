@@ -8,6 +8,9 @@ function filterWines(wines) {
     const selectedBottle = document.getElementById("bottleType").value;
     const maxPrice = document.getElementById("maxPrice").value;
 
+    if (!validatefilters(wine_id)) {
+        return;
+    }
     return wines.filter(wine => {
 
         return (
@@ -55,6 +58,7 @@ function get_all_wines() {
 
     document.getElementById("wines").innerHTML = out;
     document.getElementById("Wineform").reset();
+    document.getElementById("filtermessage").innerHTML = "";
 });
 }
 function closeWines() {
