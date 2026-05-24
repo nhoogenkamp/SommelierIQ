@@ -54,15 +54,15 @@ def admin_login():
 def new_wine():
     return add_wine()
 
-@app.route('/deleteWine', methods=['POST'])
+@app.route('/deleteWine', methods=['DELETE'])
 def deleting_wine():
     return delete_wine()
 
-@app.route('/updateWine', methods=['POST'])
+@app.route('/updateWine', methods=['PUT'])
 def updating_wine():
     return update_wine()
 
-@app.route('/availableWine', methods=['POST'])
+@app.route('/availableWine', methods=['PUT'])
 def updating_available_wine():
     return available_wine()
 

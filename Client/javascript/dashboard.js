@@ -133,7 +133,7 @@ function deleteWine() {
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/deleteWine`, {
-            method: "POST",
+            method: "DELETE",
             body: JSON.stringify(entry),
             cache: "no-cache",
             headers: new Headers({
@@ -178,7 +178,7 @@ function updateWine() {
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/updateWine`, {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(entry),
             cache: "no-cache",
             headers: new Headers({
@@ -220,7 +220,7 @@ function availableWine() {
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
         fetch(`http://localhost:8080/availableWine`, {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(entry),
             cache: "no-cache",
             headers: new Headers({
