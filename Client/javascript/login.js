@@ -4,6 +4,11 @@ function login_admin() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
+    // validating login in validation.js
+    if (!validateLogin(username,password)) {
+        return;
+    }
+
     // object sent to Flask backend
     var entry = {
         username: username,
