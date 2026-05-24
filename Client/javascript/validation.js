@@ -184,3 +184,14 @@ function validateAvailableUpdateWine(wine_id, available) {
     }    
     return true;
 }
+
+// VALIDATING FOOD PAIRING
+function validatedishes(dishCount) {
+
+    if (Number(dishCount) <1 || Number(dishCount) >8) {
+        document.getElementById("dishMessage").innerHTML =
+            "Please pick at least one dish";
+        return false;
+    }   
+    return true;
+}

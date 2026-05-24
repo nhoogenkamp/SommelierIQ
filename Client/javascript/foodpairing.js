@@ -177,6 +177,10 @@ function submit_dish() {
     var dishCount = document.getElementById("dishCount").value;
     var dishes = [];
 
+    if (!validatedishes(dishCount)) {
+        return;
+    }  
+
     for (let i = 1; i <= dishCount; i++){
         // Get the dropdown element with id
         var dish = document.getElementById(`dish_${i}`);
