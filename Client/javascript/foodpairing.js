@@ -19,6 +19,8 @@ function filterWines(wines) {
 
 function genFields() {
 
+    document.getElementById("dishMessage").innerHTML = "";
+
     document.getElementById("fields").innerHTML = "";
 
     let numFields = document.getElementById("dishCount").value;

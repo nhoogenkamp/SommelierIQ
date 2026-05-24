@@ -193,5 +193,6 @@ function validatedishes(dishCount) {
             "Please pick at least one dish";
         return false;
     }   
+    document.getElementById("dishMessage").innerHTML = "";
     return true;
 }
