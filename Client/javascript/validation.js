@@ -142,3 +142,14 @@ function validateAddWine(restaurant_id, name, wine_type, grape,country, region, 
 }
     return true;
 }
+
+function validatedeletion(wine_id) {
+
+    if (wine_id == "" && !/^\d+$/.test(wine_id)) {
+        document.getElementById("deleteMessage").innerHTML =
+            "Please provide a numerical ID or leave blank for search all wines";
+        return false;
+    }
+
+    return true;
+}

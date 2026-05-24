@@ -134,6 +134,10 @@ function deleteWine() {
     var entry = {
         wine_id: document.getElementById("delete_wine_id").value,
         };
+
+    if (!validatedeletion(wine_id)) {
+        return;
+    }    
     console.log(entry.wine_id);    
 
     if (confirm(`Please confirm you want to delete wine ID ${entry.wine_id}`)) {
