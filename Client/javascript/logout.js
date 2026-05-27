@@ -8,7 +8,7 @@ function logoutAdmin() {
     })
     .then(function(json) {
         console.log(json);
-        // redirect to dashboard page    
-        window.location.href = "login.html";
+
+        window.location.href = "/Client/pages/login.html";
     });
 }
