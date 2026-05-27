@@ -6,5 +6,40 @@ const navbarPath =
 fetch(navbarPath)
 .then(response => response.text())
 .then(data => {
+
     document.getElementById("navbar").innerHTML = data;
+
+    const nav = document.querySelector("#navbar nav");
+
+    const dashboardLink = document.querySelector(
+        '#navbar a[href="/Client/pages/dashboard.html"]'
+    );
+
+    fetch(`http://localhost:8080/checkAdmin`, {
+        method: "GET",
+        credentials: "include"
+    })
+    .then(response => response.json())
+    .then(json => {
+
+        const loggedIn = json.logged_in === true;
+
+        if (dashboardLink) {
+            dashboardLink.style.display = loggedIn ? "inline-block" : "none";
+        }
+
+        if (loggedIn && nav && !document.getElementById("logoutBtn")) {
+            const logoutBtn = document.createElement("button");
+
+            logoutBtn.innerText = "Logout";
+            logoutBtn.id = "logoutBtn";
+            logoutBtn.onclick = logoutAdmin;
+
+            nav.appendChild(logoutBtn);
+        }
+
+        if (!loggedIn && window.location.pathname.includes("dashboard.html")) {
+            window.location.href = "/Client/pages/login.html";
+        }
+    });
 });
