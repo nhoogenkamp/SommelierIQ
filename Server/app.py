@@ -2,7 +2,7 @@ from flask import Flask
 from routes.wines import get_tables, get_wines , get_all_wines
 from routes.menu import get_food
 from routes.senddish import send_dish
-from routes.admin import add_admin, login_admin
+from routes.admin import add_admin, login_admin, check_admin
 from routes.addwine import add_wine
 from routes.deleteWine import delete_wine
 from routes.updateWine import update_wine
@@ -66,6 +66,10 @@ def updating_wine():
 @app.route('/availableWine', methods=['PUT'])
 def updating_available_wine():
     return available_wine()
+
+@app.route('/checkAdmin', methods=['GET'])
+def checking_admin():
+    return check_admin()
 
 if __name__ == "__main__":
     print("connecting to DB....")
