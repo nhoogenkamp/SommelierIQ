@@ -1,3 +1,23 @@
+// checking first if user is logged in
+function checkAdmin() {
+
+    fetch(`http://localhost:8080/checkAdmin`, {
+        method: "GET",
+        credentials: "include"
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(json) {
+        console.log(json);
+        if (json.logged_in !== true) {
+            window.location.href = "login.html";
+        }
+    });
+}
+
+checkAdmin();
+
 //https://stackoverflow.com/questions/57891275/simple-fetch-get-request-in-javascript-to-a-flask-server 
 
 // display in table :https://www.youtube.com/watch?v=eS-FVnhjvEQ
