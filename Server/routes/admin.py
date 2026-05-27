@@ -88,3 +88,19 @@ def login_admin():
     return jsonify({
         "error": "Incorrect username or password"
     }), 401
+
+# checking if admin is logged in
+def check_admin():
+
+    if "loggedin" in session:
+
+        return jsonify({
+            "logged_in": True,
+            "username": session["username"],
+            "restaurant_id": session["restaurant_id"]
+        }), 200
+
+    return jsonify({
+        "logged_in": False,
+        "error": "Please login first"
+    }), 401
