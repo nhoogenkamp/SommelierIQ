@@ -104,3 +104,14 @@ def check_admin():
         "logged_in": False,
         "error": "Please login first"
     }), 401
+
+# logout : https://www.geeksforgeeks.org/python/login-and-registration-project-using-flask-and-mysql/
+def logout_admin():
+    session.pop("loggedin", None)
+    session.pop("admin_id", None)
+    session.pop("restaurant_id", None)
+    session.pop("username", None)
+
+    return jsonify({
+        "message": "Logged out successfully"
+    }), 200
