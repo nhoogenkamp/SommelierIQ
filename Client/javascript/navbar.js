@@ -1,3 +1,4 @@
+// Navigation Created with AI
 const navbarPath =
     window.location.pathname.includes("/pages/")
     ? "../components/navbar.html"
