@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from db import get_db_connection
-from validations import validate_wine
+from routes.validations import validate_wine
 
 def add_wine():
     data = request.get_json()

@@ -92,21 +92,21 @@ function addWine() {
     
     // getting values from html and us this to sent to Flask backend
     var entry = {
-        restaurant_id: document.getElementById("restaurant_id").value,
+        restaurant_id: Number(document.getElementById("restaurant_id").value),
         name: document.getElementById("name").value,
         wine_type: document.getElementById("wine_type").value,
         grape: document.getElementById("grape").value,
         country: document.getElementById("country").value,
         region: document.getElementById("region").value,
-        year: document.getElementById("year").value,
+         year: Number(document.getElementById("year").value),
         bottle_type: document.getElementById("bottle_type").value,
-        price: document.getElementById("price").value,
-        available: document.getElementById("available").value,
+         price: Number(document.getElementById("price").value),
+        available: Number(document.getElementById("available").value),
         description: document.getElementById("description").value,
-        body_score: document.getElementById("body_score").value,
-        tannin_score: document.getElementById("tannin_score").value,
-        acidity_score: document.getElementById("acidity_score").value,
-        sweetness_score: document.getElementById("sweetness_score").value
+        body_score: Number(document.getElementById("body_score").value),
+        tannin_score: Number(document.getElementById("tannin_score").value),
+        acidity_score: Number(document.getElementById("acidity_score").value),
+        sweetness_score: Number(document.getElementById("sweetness_score").value)
     };
 
     if (!validateAddWine(entry.restaurant_id, entry.name, entry.wine_type, entry.grape, entry.country, entry.region, entry.year, entry.bottle_type, entry.price, entry.available, entry.description, entry.body_score, entry.tannin_score, entry.acidity_score, entry.sweetness_score)) {

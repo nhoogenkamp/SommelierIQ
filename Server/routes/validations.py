@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def validate_wine(data)
+def validate_wine(data):
     #validations: https://www.w3schools.com/Python/trypython.asp?filename=demo_for_break
     #https://ashishsah1111.medium.com/input-validation-and-error-handling-in-flask-apis-332f4e9bc05d
     # append https://www.w3schools.com/Python/trypython.asp?filename=demo_ref_list_append2
@@ -31,13 +31,13 @@ def validate_wine(data)
     inputstring = ["wine_type", "grape", "country", "bottle_type", "description"]
     for s in inputstring:
         if not isinstance(data.get(s), str):
-            errors.append(f"{f} must be text")
+            errors.append(f"{s} must be text")
 
     # checking if its int
     inputint = ["year", "available", "body_score", "tannin_score", "acidity_score", "sweetness_score"]
     for i in inputint:
         if not isinstance(data.get(i), int):
-            errors.append(f"{f} must be a whole number")
+            errors.append(f"{i} must be a whole number")
 
     if "year" in data: 
        if data["year"] < 1900 or data["year"]> datetime.now().year:
@@ -60,9 +60,12 @@ def validate_wine(data)
         if data["available"] not in availablenum:
             errors.append("Available is only 0 or 1")
 
-    inputscore = ["body_score", "tannin_score", "acidity_score", "sweetness_score"]
+    inputscore = ["body_score","tannin_score","acidity_score","sweetness_score"]
     for i in inputscore:
-        if data[i] < 0 or data[i] >20:
-            errors.append(f"{i} must be between 0 and 20")    
+        if not isinstance(data.get(i), int):
+            errors.append(f"{i} must be a whole number")
+        else:
+            if data[i] < 0 or data[i] > 20:
+                errors.append(f"{i} must be between 0 and 20")
 
     return errors
