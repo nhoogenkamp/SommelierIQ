@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 def validate_wine(data):
     #validations: https://www.w3schools.com/Python/trypython.asp?filename=demo_for_break
@@ -67,5 +68,43 @@ def validate_wine(data):
         else:
             if data[i] < 0 or data[i] > 20:
                 errors.append(f"{i} must be between 0 and 20")
+
+    return errors
+
+
+# validating add user
+def validate_registration(data):
+
+    # Validations for add wine
+    fields = ["restaurant_id", "username", "password"]
+
+    errors = []
+
+    # checking if fields are not missing
+    for f in fields:
+        if f not in data:
+            errors.append(f"{f} is required")
+
+    if "restaurant_id" in data: 
+
+        # checking if restaurant_id is an int and greater than 0
+        if not isinstance(data.get("restaurant_id"), int):
+            errors.append("Restaurant_id must be a whole number")
+        else:    
+            if data["restaurant_id"] < 1:
+                errors.append("Restaurant_id must greater than 1")
+
+    # checking if username has more then 6 characters and no spaces
+    if "username" in data: 
+       if (len(data["username"])) < 6 or " " in data ["username"]:
+            errors.append("Username needs at least 6 Characters and no spaces!")
+
+    if "password" in data:
+        if " " in data ["password"]:
+            errors.append("password can't contain spaces!")
+        else:  
+            if re.data["password"] (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/):
+                errors.append("password can't contain spaces!")
+
 
     return errors

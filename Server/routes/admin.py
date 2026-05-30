@@ -2,11 +2,20 @@ from flask import session, request, jsonify
 from db import get_db_connection
 # flask library that helps create and read passwords
 from werkzeug.security import generate_password_hash, check_password_hash
+from routes.validations import validate_registration
 
 def add_admin():
 
     # get JSON data sent from JavaScript
     data = request.get_json()
+
+    # checking erros in validations.py
+    errors = validate_registration(data)
+
+    if errors:
+        return jsonify({
+            "errors": errors
+        }), 400
 
     print(data)
 
