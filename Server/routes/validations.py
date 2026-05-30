@@ -125,3 +125,32 @@ def validate_login(data):
             errors.append(f"{f} is required")
 
     return errors
+
+#validating update availability
+def validate_availability(data):
+
+    # Validations for add wine
+    fields = ["wine_id", "available"]
+
+    errors = []
+
+    # checking if fields are not missing
+    for f in fields:
+        if f not in data:
+            errors.append(f"{f} is required")
+
+    if "wine_id" in data: 
+
+        # checking if wine_id is an int and greater than 0
+        if not isinstance(data.get("wine_id"), int):
+            errors.append("wine_id must be a whole number")
+        else:    
+            if data["wine_id"] < 1:
+                errors.append("wine_id must greater than 1")
+
+    if "available" in data: 
+        availablenum = [1 , 0]
+        if data["available"] not in availablenum:
+            errors.append("Available is only 0 or 1")
+
+    return errors

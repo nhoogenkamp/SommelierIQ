@@ -100,7 +100,7 @@ function addWine() {
         region: document.getElementById("region").value,
          year: Number(document.getElementById("year").value),
         bottle_type: document.getElementById("bottle_type").value,
-         price: Number(document.getElementById("price").value),
+        price: Number(document.getElementById("price").value),
         available: Number(document.getElementById("available").value),
         description: document.getElementById("description").value,
         body_score: Number(document.getElementById("body_score").value),
@@ -152,7 +152,7 @@ function addWine() {
 // Delete 1 wine with popup: https://www.w3schools.com/js/js_popup.asp
 function deleteWine() {
     var entry = {
-        wine_id: document.getElementById("delete_wine_id").value,
+        wine_id: Number(document.getElementById("delete_wine_id").value),
         };
 
     if (!validatedeletion(wine_id)) {
@@ -204,8 +204,8 @@ function deleteWine() {
 }
 function updateWine() {
     var entry = {
-        wine_id: document.getElementById("update_wine_id").value,
-        price: document.getElementById("update_price").value,
+        wine_id: Number(document.getElementById("update_wine_id").value),
+        price: Number(document.getElementById("update_price").value),
         };  
         
     if (!validatePriceUpdateWine(entry.wine_id, entry.price)) {
@@ -249,8 +249,8 @@ function updateWine() {
 }
 function availableWine() {
     var entry = {
-        wine_id: document.getElementById("available_wine_id").value,
-        available: document.getElementById("update_available").value,
+        wine_id: Number(document.getElementById("available_wine_id").value),
+        available:Number(document.getElementById("update_available").value),
         };  
 
     if (!validateAvailableUpdateWine(entry.wine_id, entry.available)) {

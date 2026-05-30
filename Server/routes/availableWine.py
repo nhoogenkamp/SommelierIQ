@@ -1,9 +1,17 @@
 from flask import request, jsonify
 from db import get_db_connection
+from routes.validations import validate_availability
 
 def available_wine():
     data = request.get_json()
-    print(data)
+
+    # checking erros in validations.py
+    errors = validate_availability(data)
+
+    if errors:
+        return jsonify({
+            "errors": errors
+        }), 400
 
     wine_id = data["wine_id"]
     available = data["available"]
