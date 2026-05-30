@@ -12,7 +12,7 @@ fetch(navbarPath)
     const nav = document.querySelector("#navbar nav");
 
     const dashboardLink = document.querySelector(
-        '#navbar a[href="/Client/pages/dashboard.html"]'
+        '#navbar a[href="/pages/dashboard.html"]'
     );
 
     if (dashboardLink) {
@@ -48,14 +48,14 @@ fetch(navbarPath)
         }
 
         if (!loggedIn && window.location.pathname.includes("dashboard.html")) {
-            window.location.href = "/Client/pages/login.html";
+            window.location.href = "/pages/login.html";
         }
     })
     .catch(error => {
         console.error("Navbar auth check failed:", error);
 
         if (window.location.pathname.includes("dashboard.html")) {
-            window.location.href = "/Client/pages/login.html";
+            window.location.href = "/pages/login.html";
         }
     });
 });

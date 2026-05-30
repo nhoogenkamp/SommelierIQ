@@ -9,6 +9,6 @@ function logoutAdmin() {
     .then(function(json) {
         console.log(json);
 
-        window.location.href = "/Client/pages/login.html";
+        window.location.href = "/pages/login.html";
     });
 }
