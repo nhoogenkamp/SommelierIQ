@@ -156,7 +156,7 @@ def check_admin():
     return jsonify({
         "logged_in": False,
         "error": "Please login first"
-    }), 401
+    }), 200 # temporary so no 
 
 # logout : https://www.geeksforgeeks.org/python/login-and-registration-project-using-flask-and-mysql/
 def logout_admin():
