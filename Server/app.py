@@ -15,13 +15,16 @@ from flask_cors import CORS
 #https://www.google.com/search?q=from+flask_cors+import+cors&oq=from+flask_cors+import+CORS&gs_lcrp=EgZjaHJvbWUqDQgAEAAYkQIYgAQYigUyDQgAEAAYkQIYgAQYigUyCAgBEAAYFhgeMggIAhAAGBYYHjIICAMQABgWGB4yCAgEEAAYFhgeMggIBRAAGBYYHjIICAYQABgWGB4yDQgHEAAYhgMYgAQYigUyBwgIEAAY7wUyBwgJEAAY7wXSAQcyNzBqMGo5qAIGsAIB8QX1TVs-UXY3Vg&sourceid=chrome&ie=UTF-8
 # adding flask secret key for sessions and added CORS due to different address for front end: https://gist.github.com/frostming/3c2694c5e18f64ac7c17fd11178c98f5
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 #with AI
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "temporary-dev-secret")
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+
 CORS(app, supports_credentials=True, origins=[
     "https://merry-dragon-158655.netlify.app",
-    "http://localhost:5500"
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
 ])
 
 # https://www.newline.co/@goatandsheep/python-dotenv-managing-your-environment-variables-with-ease--ce4fb62d

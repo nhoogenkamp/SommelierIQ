@@ -11,9 +11,7 @@ fetch(navbarPath)
 
     const nav = document.querySelector("#navbar nav");
 
-    const dashboardLink = document.querySelector(
-        '#navbar a[href="/pages/dashboard.html"]'
-    );
+    const dashboardLink = document.getElementById("dashboardLink");
 
     if (dashboardLink) {
         dashboardLink.style.display = "none";

@@ -229,7 +229,7 @@ function submit_dish() {
             console.log(`response status was not 200: ${response.status}`);
             return;
         }
-        console.log("1 dish sent successfully")
+        console.log("dish sent successfully")
         // had to return in order to use the next .then function
         return response.json()
     })
