@@ -177,7 +177,7 @@ def validate_delete_wine(data):
 def validate_senddish(data):
 
     # Validations for add wine
-    fields = ["dishes"]
+    fields = ["restaurant_id", "dishes"]
 
     errors = []
 
@@ -187,6 +187,15 @@ def validate_senddish(data):
             errors.append(f"{f} is required")
         elif len(data["dishes"]) == 0:
             errors.append("At least one dish is required")
+
+    if "restaurant_id" in data: 
+
+    # checking if restaurant_id is an int and greater than 0
+        if not isinstance(data.get("restaurant_id"), int):
+            errors.append("Restaurant_id must be a whole number")
+        else:    
+            if data["restaurant_id"] < 1:
+                errors.append("Restaurant_id must greater than 1") 
     return errors
 
 #validating update wine price

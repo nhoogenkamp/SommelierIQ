@@ -32,6 +32,7 @@ def send_dish():
     try:
         # Get the value stored in the key both dishes and sauces
         selected_dishes = data["dishes"]
+        restaurant_id = data["restaurant_id"]
 
         individual_recommendations = []
         combined_recommendations = []
@@ -69,8 +70,10 @@ def send_dish():
 
 
             #sql query to get all wines 
-            wine_sql = "SELECT * FROM wines"
-            cursor.execute(wine_sql)
+            wine_sql = "SELECT * FROM wines WHERE restaurant_id = %s AND available = 1"
+            check_value= (restaurant_id,)
+
+            cursor.execute(wine_sql,check_value)
             wines = cursor.fetchall()
 
             #creating an empty list to store recommendations

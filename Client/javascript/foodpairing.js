@@ -207,7 +207,8 @@ function submit_dish() {
     }
 
     // Create JavaScript object to send to Flask
-        var entry = {
+    var entry = {
+        restaurant_id: Number(document.getElementById("restaurant_id").value),
         dishes: dishes
     };
 
