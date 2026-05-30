@@ -178,3 +178,18 @@ def validate_delete_wine(data):
                 errors.append("wine_id must greater than 0")
 
     return errors
+
+#validating send dish
+def validate_senddish(data):
+
+    # Validations for add wine
+    fields = ["dishes"]
+
+    errors = []
+
+    # checking if fields are not missing
+    for f in fields:
+        if f not in data:
+            errors.append(f"{f} is required")
+    
+    return errors
