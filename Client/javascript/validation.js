@@ -62,15 +62,9 @@ function validatefilters(wine_id) {
     return true;
 }
 
-function validateAddWine(restaurant_id, name, wine_type, grape,country, region, year, bottle_type, price, available,description, body_score, tannin_score, acidity_score, sweetness_score) {
+function validateAddWine(name, wine_type, grape,country, region, year, bottle_type, price, available,description, body_score, tannin_score, acidity_score, sweetness_score) {
 
     const currentyear = new Date().getFullYear();
-
-    if (restaurant_id === ""|| restaurant_id < 1 || !/^\d+$/.test(restaurant_id)) {
-        document.getElementById("addMessage").innerHTML =
-            "Please provide correct restaurant ID";
-        return false;
-    }
     if (name === "") {
         document.getElementById("addMessage").innerHTML =
             "Please provide a wine name";
