@@ -25,7 +25,7 @@ def tables():
     return get_tables()
 
 #get wines from db
-@app.route('/getWines', methods=['GET'])
+@app.route('/getWines', methods=['POST'])
 def wines():
     return get_wines()
 
