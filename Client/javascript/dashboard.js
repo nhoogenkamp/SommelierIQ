@@ -92,7 +92,6 @@ function addWine() {
     
     // getting values from html and us this to sent to Flask backend
     var entry = {
-        restaurant_id: Number(document.getElementById("restaurant_id").value),
         name: document.getElementById("name").value,
         wine_type: document.getElementById("wine_type").value,
         grape: document.getElementById("grape").value,
@@ -109,7 +108,7 @@ function addWine() {
         sweetness_score: Number(document.getElementById("sweetness_score").value)
     };
 
-    if (!validateAddWine(entry.restaurant_id, entry.name, entry.wine_type, entry.grape, entry.country, entry.region, entry.year, entry.bottle_type, entry.price, entry.available, entry.description, entry.body_score, entry.tannin_score, entry.acidity_score, entry.sweetness_score)) {
+    if (!validateAddWine(entry.name, entry.wine_type, entry.grape, entry.country, entry.region, entry.year, entry.bottle_type, entry.price, entry.available, entry.description, entry.body_score, entry.tannin_score, entry.acidity_score, entry.sweetness_score)) {
         return;
     }
 
