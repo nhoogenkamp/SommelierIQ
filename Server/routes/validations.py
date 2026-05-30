@@ -193,3 +193,33 @@ def validate_senddish(data):
             errors.append(f"{f} is required")
     
     return errors
+
+#validating update wine price
+def validate_update_wine(data):
+
+    # Validations for add wine
+    fields = ["price", "wine_id"]
+
+    errors = []
+
+    for f in fields:
+        if f not in data:
+            errors.append(f"{f} is required")
+
+    if "wine_id" in data: 
+
+        # checking if wine_id is an int and greater than 0
+        if not isinstance(data.get("wine_id"), int):
+            errors.append("wine_id must be a whole number")
+        else:    
+            if data["wine_id"] < 1:
+                errors.append("wine_id must greater than 0")
+    
+    if "price" in data: 
+        if not isinstance(data.get("price"),(int, float)):
+            errors.append("Price must be a number")
+        else:    
+            if data["price"] < 1:
+                errors.append("Price must be at least 1")            
+    
+    return errors
