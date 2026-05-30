@@ -185,7 +185,9 @@ def validate_senddish(data):
     for f in fields:
         if f not in data:
             errors.append(f"{f} is required")
-    
+        elif len(data["dishes"]) == 0:
+            errors.append("At least one dish is required")
+            
     return errors
 
 #validating update wine price
