@@ -80,7 +80,7 @@ def add_admin():
 def login_admin():
 
     data = request.get_json()
-    
+    # checking erros in validations.py
     errors = validate_login(data)
 
     if errors:
@@ -91,6 +91,7 @@ def login_admin():
     username = data["username"]
     password = data["password"]
     
+    # 503 error for connection
     try:
         con = get_db_connection()
         cursor = con.cursor(dictionary=True)
@@ -105,6 +106,7 @@ def login_admin():
     sql = "SELECT * FROM admins WHERE username = %s"
     values = (username,)
 
+   # return 500 if query fails
     try:
         cursor.execute(sql, values)
         admin = cursor.fetchone()
