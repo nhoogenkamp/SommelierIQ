@@ -154,3 +154,27 @@ def validate_availability(data):
             errors.append("Available is only 0 or 1")
 
     return errors
+
+#validating update availability
+def validate_delete_wine(data):
+
+    # Validations for add wine
+    fields = ["wine_id"]
+
+    errors = []
+
+    # checking if fields are not missing
+    for f in fields:
+        if f not in data:
+            errors.append(f"{f} is required")
+
+    if "wine_id" in data: 
+
+        # checking if wine_id is an int and greater than 0
+        if not isinstance(data.get("wine_id"), int):
+            errors.append("wine_id must be a whole number")
+        else:    
+            if data["wine_id"] < 1:
+                errors.append("wine_id must greater than 0")
+
+    return errors
