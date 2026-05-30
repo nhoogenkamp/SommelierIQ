@@ -3,6 +3,7 @@ from db import get_db_connection
 # flask library that helps create and read passwords
 from werkzeug.security import generate_password_hash, check_password_hash
 from routes.validations import validate_registration
+import mysql.connector
 
 def add_admin():
 
@@ -17,7 +18,6 @@ def add_admin():
             "errors": errors
         }), 400
 
-    print(data)
 
     restaurant_id = data["restaurant_id"]
     username = data["username"]
@@ -25,38 +25,57 @@ def add_admin():
 
     # turn normal password into hashed password
     password_hash = generate_password_hash(password)
-
-    con = get_db_connection()
-    cursor = con.cursor(dictionary=True)
-
-    # checking if user exist
-    check_sql = "SELECT * FROM admins WHERE username = %s"
-    check_value= (username,)
     
-    cursor.execute(check_sql, check_value)
+    # 503 error for connection: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
+    try:
+        con = get_db_connection()
+        cursor = con.cursor(dictionary=True)
 
-    admin_exists = cursor.fetchone()
-    if admin_exists:
+    except mysql.connector.Error as err:
+        print("Error:", err.errno)
+
+        return jsonify({
+            "error": "Could not connect with database"
+        }), 503
+    
+    try:
+        # checking if user exist
+        check_sql = "SELECT * FROM admins WHERE username = %s"
+        check_value= (username,)
+        
+        cursor.execute(check_sql, check_value)
+
+        admin_exists = cursor.fetchone()
+        if admin_exists:
+            return jsonify({
+                "error": "Username already exists"
+            }), 400
+
+        # insert admin into admins table
+        sql = "INSERT INTO admins (restaurant_id, username, password_hash) VALUES (%s, %s, %s)"
+        values = (restaurant_id, username, password_hash)
+
+        cursor.execute(sql, values)
+
+        con.commit()
+
+    # rollback https://www.geeksforgeeks.org/python/commit-rollback-operation-in-python/
+    except mysql.connector.Error as err:
+        print("Error:", err)
+        con.rollback()
+
+        return jsonify({
+            "error": "Could not add an account to the database"
+        }), 500
+    
+    # https://www.w3schools.com/python/showpython.asp?filename=demo_try_except5
+    finally: 
         cursor.close()
         con.close()
-        return jsonify({
-            "error": "Username already exists"
-        }), 400
-
-    # insert admin into admins table
-    sql = "INSERT INTO admins (restaurant_id, username, password_hash) VALUES (%s, %s, %s)"
-    values = (restaurant_id, username, password_hash)
-
-    cursor.execute(sql, values)
-
-    con.commit()
-
-    cursor.close()
-    con.close()
 
     return jsonify({
         "message": "Admin account created"
-    }), 200
+    }), 201
 
 def login_admin():
 
