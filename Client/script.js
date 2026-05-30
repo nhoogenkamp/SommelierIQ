@@ -26,7 +26,7 @@ function getWines() {
         restaurant_id: restaurant_id
     };
 
-    fetch(`http://localhost:8080/getWines`, {
+    fetch(`https://sommelieriq-production.up.railway.app/getWines`, {
         method: "POST",
         body: JSON.stringify(entry),
         cache: "no-cache",

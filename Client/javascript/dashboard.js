@@ -1,7 +1,7 @@
 // checking first if user is logged in
 function checkAdmin() {
 
-    fetch(`http://localhost:8080/checkAdmin`, {
+    fetch(`https://sommelieriq-production.up.railway.app/checkAdmin`, {
         method: "GET",
         credentials: "include"
     })
@@ -45,7 +45,7 @@ function filterWines(wines) {
 
 function get_all_wines() {
     document.getElementById("wineSection").style.display = "block";
-    const url = 'http://localhost:8080/getallWines'
+    const url = 'https://sommelieriq-production.up.railway.app/getallWines'
     fetch(url, {
         method: "GET",
         credentials: "include"
@@ -117,7 +117,7 @@ function addWine() {
 
 
      // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-    fetch(`http://localhost:8080/addWine`, {
+    fetch(`https://sommelieriq-production.up.railway.app/addWine`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify(entry),
@@ -167,7 +167,7 @@ function deleteWine() {
         document.getElementById("deleteMessage").innerHTML =  "Deleting wine";
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-        fetch(`http://localhost:8080/deleteWine`, {
+        fetch(`https://sommelieriq-production.up.railway.app/deleteWine`, {
             method: "DELETE",
             credentials: "include",
             body: JSON.stringify(entry),
@@ -216,7 +216,7 @@ function updateWine() {
         return;
     }   
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-        fetch(`http://localhost:8080/updateWine`, {
+        fetch(`https://sommelieriq-production.up.railway.app/updateWine`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify(entry),
@@ -263,7 +263,7 @@ function availableWine() {
     }  
 
         // Send POST request to Flask backend with method, body preventing browser from caching and telling flask its JSON data
-        fetch(`http://localhost:8080/availableWine`, {
+        fetch(`https://sommelieriq-production.up.railway.app/availableWine`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify(entry),
