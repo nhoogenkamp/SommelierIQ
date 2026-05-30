@@ -1,7 +1,7 @@
 function register_admin() {
     
     // getting values from html 
-    var restaurant_id = document.getElementById("restaurant_id").value;
+    var restaurant_id = Number(document.getElementById("restaurant_id").value);
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     
