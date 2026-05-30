@@ -85,12 +85,6 @@ def checking_admin():
 def logout():
     return logout_admin()
 
-# testing my cookie
-@app.after_request
-def after_request(response):
-    print("Set-Cookie:", response.headers.get("Set-Cookie"))
-    return response
-
 if __name__ == "__main__":
     print("connecting to DB....")
     app.run(
