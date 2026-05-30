@@ -99,12 +99,14 @@ def validate_registration(data):
        if (len(data["username"])) < 6 or " " in data ["username"]:
             errors.append("Username needs at least 6 Characters and no spaces!")
 
+    PASSWORD_REGEX = re.compile(
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$'
+)
     if "password" in data:
         if " " in data ["password"]:
             errors.append("password can't contain spaces!")
-        else:  
-            if re.data["password"] (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/):
-                errors.append("password can't contain spaces!")
+        elif not PASSWORD_REGEX.match (data["password"]):
+                errors.append("Please ensure password has one lowercase, one uppercase, one special character and minimum 8 characters long ")
 
 
     return errors
