@@ -110,3 +110,18 @@ def validate_registration(data):
 
 
     return errors
+
+# validating login
+def validate_login(data):
+
+    # Validations for add wine
+    fields = ["username", "password"]
+
+    errors = []
+
+    # checking if fields are not missing
+    for f in fields:
+        if f not in data or " " in data [f]:
+            errors.append(f"{f} is required")
+
+    return errors
