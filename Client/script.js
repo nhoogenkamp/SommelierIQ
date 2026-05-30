@@ -3,6 +3,7 @@
 // display in table :https://www.youtube.com/watch?v=eS-FVnhjvEQ
 
 function filterWines(wines) {
+    const restaurant_id = Number(document.getElementById("restaurant_id").value);
     const selectedColour = document.getElementById("wineColour").value;
     const selectedBottle = document.getElementById("bottleType").value;
     const maxPrice = document.getElementById("maxPrice").value;
@@ -19,8 +20,20 @@ function filterWines(wines) {
 }
 
 function getWines() {
-    const url = 'http://localhost:8080/getWines'
-    fetch(url)
+    var restaurant_id = Number(document.getElementById("restaurant_id").value);
+
+    var entry = {
+        restaurant_id: restaurant_id
+    };
+
+    fetch(`http://localhost:8080/getWines`, {
+        method: "POST",
+        body: JSON.stringify(entry),
+        cache: "no-cache",
+        headers: new Headers({
+            "content-type": "application/json"
+        })
+    })
     .then(response => response.json())  
     .then(json => {
 
