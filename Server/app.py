@@ -16,9 +16,16 @@ from flask_cors import CORS
 # adding flask secret key for sessions and added CORS due to different address for front end: https://gist.github.com/frostming/3c2694c5e18f64ac7c17fd11178c98f5
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'this is a secret'
+#with AI
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
-CORS(app, supports_credentials=True)
+CORS(
+    app,
+    supports_credentials=True,
+    origins=[
+        "http://localhost:5500"
+    ]
+)
 
 # https://www.newline.co/@goatandsheep/python-dotenv-managing-your-environment-variables-with-ease--ce4fb62d
 # Using .env file to store secret password etc.
