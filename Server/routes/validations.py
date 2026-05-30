@@ -9,7 +9,7 @@ def validate_wine(data):
     # https://www.w3schools.com/Python/trypython.asp?filename=demo_for_break
 
     # Validations for add wine
-    fields = ["restaurant_id", "name", "wine_type", "grape", "country", "region", "year", "bottle_type", "price", "available", "description"
+    fields = ["name", "wine_type", "grape", "country", "region", "year", "bottle_type", "price", "available", "description"
               , "body_score", "tannin_score", "acidity_score", "sweetness_score"]
 
     errors = []
@@ -18,15 +18,6 @@ def validate_wine(data):
     for f in fields:
         if f not in data:
             errors.append(f"{f} is required")
-
-    if "restaurant_id" in data: 
-
-        # checking if restaurant_id is an int and greater than 0
-        if not isinstance(data.get("restaurant_id"), int):
-            errors.append("Restaurant_id must be a whole number")
-        else:    
-            if data["restaurant_id"] < 1:
-                errors.append("Restaurant_id must greater than 1")
 
     # checking if is string        
     inputstring = ["wine_type", "grape", "country", "bottle_type", "description"]
