@@ -1,10 +1,16 @@
-from flask import request, jsonify
+from flask import request, jsonify, session
 from db import get_db_connection
 from routes.validations import validate_wine
 #https://overiq.com/mysql-connector-python-101/exception-handling-in-connector-python/index.html
 import mysql.connector
 
 def add_wine():
+
+    if not session.get("loggedin"):
+        return jsonify({
+            "error": "Please login first"
+            }), 401
+    
     data = request.get_json()
 
     # checking erros in validations.py
@@ -15,7 +21,7 @@ def add_wine():
             "errors": errors
         }), 400
 
-    restaurant_id = data["restaurant_id"]
+    restaurant_id = session["restaurant_id"]
     name = data["name"]
     wine_type = data["wine_type"]
     grape = data["grape"]
