@@ -7,6 +7,7 @@ from routes.addwine import add_wine
 from routes.deleteWine import delete_wine
 from routes.updateWine import update_wine
 from routes.availableWine import available_wine
+import os
 
 
 from flask_cors import CORS
@@ -77,4 +78,7 @@ def logout():
 
 if __name__ == "__main__":
     print("connecting to DB....")
-    app.run(host='0.0.0.0', port=8080)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8080))
+    )
