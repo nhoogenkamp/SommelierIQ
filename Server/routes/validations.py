@@ -32,7 +32,10 @@ def validate_wine(data):
             errors.append(f"{i} must be a whole number")
 
     if "year" in data: 
-       if data["year"] < 1900 or data["year"]> datetime.now().year:
+        # checking if year is an int and greater than 0
+        if not isinstance(data.get("year"), int):
+            errors.append("year must be a whole number")
+        elif data["year"] < 1900 or data["year"]> datetime.now().year:
                 errors.append("Year is incorrect")
 
     if "bottle_type" in data: 

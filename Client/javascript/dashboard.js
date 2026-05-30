@@ -46,6 +46,7 @@ function filterWines(wines) {
 function get_all_wines() {
     document.getElementById("wineSection").style.display = "block";
     const url = 'http://localhost:8080/getallWines'
+    credentials: "include",
     fetch(url)
     .then(response => response.json())  
     .then(json => {
@@ -155,7 +156,7 @@ function deleteWine() {
         wine_id: Number(document.getElementById("delete_wine_id").value),
         };
 
-    if (!validatedeletion(wine_id)) {
+    if (!validatedeletion(entry.wine_id)) {
         return;
     }    
     console.log(entry.wine_id);    
