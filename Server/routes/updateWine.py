@@ -35,9 +35,10 @@ def update_wine():
             "error": "Could not connect with database"
         }), 503
     
+    restaurant_id = session["restaurant_id"]
     # checking if wine exist
-    check_sql = "SELECT * FROM wines WHERE wine_id = %s"
-    check_value= (wine_id,)
+    check_sql = "SELECT * FROM wines WHERE wine_id = %s AND restaurant_id = %s"
+    check_value= (wine_id, restaurant_id,)
     
     try:
         cursor.execute(check_sql, check_value)
