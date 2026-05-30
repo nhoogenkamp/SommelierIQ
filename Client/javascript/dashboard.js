@@ -46,8 +46,10 @@ function filterWines(wines) {
 function get_all_wines() {
     document.getElementById("wineSection").style.display = "block";
     const url = 'http://localhost:8080/getallWines'
-    credentials: "include",
-    fetch(url)
+    fetch(url, {
+        method: "GET",
+        credentials: "include"
+    })
     .then(response => response.json())  
     .then(json => {
 
