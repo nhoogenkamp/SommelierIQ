@@ -5,9 +5,13 @@ SommelierIQ is a web-based wine recommendation system developed for F.X. Buckley
 Live Application
 
 Frontend: https://merry-dragon-158655.netlify.app/
+GitHub: https://github.com/nhoogenkamp/SommelierIQ
+Backend API: https://sommelieriq-production.up.railway.app
 
 Project Documentation
 
-The full project report, including system analysis, requirements, database design, recommendation engine design, API documentation, testing, and references, is available below:
+The full project report is available below:
 
 Google Docs Report: https://docs.google.com/document/d/1P0fqFUUwj7-G189iYaEgzXEqwvLaSuuUOyIQGVAbhIE/edit?usp=sharing
+
+
